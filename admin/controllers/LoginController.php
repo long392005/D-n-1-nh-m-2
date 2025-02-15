@@ -1,3 +1,4 @@
+
 <?php
 
 class LoginController {
@@ -5,9 +6,6 @@ class LoginController {
     
     public function __construct() {
         $this->modelLogin = new Login();
-    }
-    public function index(){
-        $nguoidungs= $this->modelLogin
     }
 
     public function formLogin(){
@@ -46,3 +44,4 @@ class LoginController {
     }
 }
 ?>
+>>>>>>> 707f7c3 (Cập nhật code: sửa lỗi match expression, thêm case cho '/' hoặc default)

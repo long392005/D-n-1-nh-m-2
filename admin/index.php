@@ -4,18 +4,25 @@
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
 require_once './controllers/DonHangController.php';
+require_once './controllers/LoginController.php';
+
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
 require_once './models/DonHang.php';
+require_once './models/Login.php';
+
 // Require toàn bộ file Models
 
 // Route
 $act = $_GET['act'] ?? '/';
-if (!isset($_SESSION['user_admin']) && $act !== 'login-admin') {
+
+
+if (!isset($_SESSION['user_admin']) && $act !== 'login-admin' && $act !== 'check-login-admin') {
     header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
     exit();
 }
-// Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
+
+
 
 match ($act) {
     // Dashboards
@@ -25,4 +32,9 @@ match ($act) {
     'form-sua-don-hang'=>(new donHangController())->edit(),
     'sua-don-hang'=>(new donHangController())->update(),
     'chi-tiet-don-hang'=>(new donHangController())->detailDonHang(),
+
+    
+    'login-admin' => (new LoginController())->formLogin(),
+    'check-login-admin' => (new LoginController())->Login(),
  };
+

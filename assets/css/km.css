@@ -1,0 +1,53 @@
+
+
+.blogs-grid {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các phần tử xuống dòng khi cần */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 20px; /* Khoảng cách giữa các ô */
+    margin-bottom: 20px;
+}
+/* Định dạng màu chữ cho tên khuyến mãi */
+.product-name {
+    color: #ffffff; /* Màu trắng cho chữ */
+    font-size: 18px; /* Kích thước chữ */
+    font-weight: bold; /* Đậm chữ */
+}
+/* Định dạng thẻ sản phẩm */
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    width: 350px; /* Đảm bảo chiều rộng cố định cho thẻ sản phẩm */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Phần màu xanh bên trái (Chứa logo hoặc icon) */
+.product-card .left-side {
+    background-color: #28a745; /* Màu xanh */
+    color: white; /* Màu chữ trắng */
+    padding: 15px;
+    border-radius: 10px 10px 0 0; /* Bo góc trên */
+}
+
+/* Định dạng thông tin bên trong khuyến mãi */
+.product-card .product-info{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.product-card .product-info button {
+    border:none;
+}
+/* Định dạng khoảng cách của các ô sản phẩm */
+.blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+

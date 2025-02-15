@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.order-success {
+    background: #fff;
+    border-radius: 12px; /* Bo góc rõ ràng hơn */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Đổ bóng lớn hơn */
+    max-width: 700px; /* Tăng kích thước chiều rộng */
+    padding: 40px; /* Tăng khoảng cách bên trong */
+    text-align: center;
+}
+
+.order-success h1 {
+    color: #27ae60;
+    font-size: 36px; /* Tăng kích thước chữ tiêu đề */
+    margin-bottom: 30px;
+}
+
+.order-success p {
+    font-size: 20px; /* Tăng kích thước chữ nội dung */
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.order-success .order-id {
+    font-weight: bold;
+    color: #333;
+    font-size: 22px; /* Tăng kích thước mã đơn hàng */
+}
+
+.order-success .order-total {
+    color: #e74c3c;
+    font-size: 24px; /* Tăng kích thước tổng tiền */
+    margin: 20px 0;
+}
+
+.order-success a {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px; /* Tăng kích thước nút */
+    font-size: 18px; /* Tăng kích thước chữ trên nút */
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px; /* Làm nút bo tròn hơn */
+    transition: background 0.3s ease;
+}
+
+.order-success a:hover {
+    background: #2980b9;
+}
