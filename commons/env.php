@@ -7,7 +7,7 @@ define('BASE_URL'   , 'http://localhost/base_du_an_vip/');
 
 define('DB_HOST'    , 'localhost');
 define('DB_PORT'    , 3306);
-define('DB_NAME'    , 'meryshop');  // Tên database
+define('DB_NAME'    , 'shop');  // Tên database
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 
