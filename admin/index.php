@@ -12,7 +12,8 @@ require_once './models/DonHang.php';
 require_once './models/Login.php';
 
 // Require toàn bộ file Models
-
+require_once 'models/AdminDanhMuc.php';
+require_once 'controllers/AdminDanhMucController.php';
 // Route
 $act = $_GET['act'] ?? '/';
 
@@ -36,5 +37,13 @@ match ($act) {
     
     'login-admin' => (new LoginController())->formLogin(),
     'check-login-admin' => (new LoginController())->Login(),
+
+    //Danh mục
+    'danh-muc'              => (new AdminDanhMucController())->danhSachDanhMuc(),
+    'form-them-danh-muc'    => (new AdminDanhMucController())->formAddDanhMuc(),
+    'them-danh-muc'         => (new AdminDanhMucController())->addDanhMuc(),
+    'form-sua-danh-muc'     =>(new AdminDanhMucController())->formEditDanhMuc(),
+    'sua-danh-muc'          =>(new AdminDanhMucController())->postEditDanhMuc(),
+    'xoa-danh-muc'          =>(new AdminDanhMucController())->deleteDanhMuc(),
  };
 
