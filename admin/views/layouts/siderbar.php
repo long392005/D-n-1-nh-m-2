@@ -74,7 +74,19 @@
                     </div>
                 </li>
 
-                <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Bán hàng</span></li>
+                <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarHoadon" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebaHoadon">
+                    <i class=" ri-file-paper-2-fill"></i> <span data-key="t-advance-ui"> Quản lí Đơn hàng</span>
+                </a>
+                <div class="collapse" id="sidebarHoadon">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="?act=don-hang" class="nav-link">Danh sách hóa đơn</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
 
             </ul>
         </div>

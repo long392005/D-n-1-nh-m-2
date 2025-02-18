@@ -1,3 +1,6 @@
+<?php
+$nguoiDung = $_SESSION['user_admin'] ?? null;
+?>
 <header id="page-topbar">
     <div class="layout-width">
         <div class="navbar-header">
@@ -48,18 +51,19 @@
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
-                            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="<?=  BASE_URL . $useImg=$_SESSION['user_admin'] ['avartar']?> alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Anna Adame</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text"> <?php echo $_SESSION['user_admin']['ten'] ?? 'Guest'; ?></span>
                                 <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Founder</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Welcome Anna!</h6>
-                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
-                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                        <h6 class="dropdown-header">Welcome <?php echo $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!</h6>
+                        <a class="dropdown-item" href="?act=detail-tai-khoan&id_nguoi_dung=<?= $nguoiDung['id'] ?? ''; ?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1">
+                        </i> <span class="align-middle">Tài khoản</span></a>
+                        <a class="dropdown-item" href="?act=logout-admin"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Đăng xuất</span></a>
                     </div>
                 </div>
             </div>

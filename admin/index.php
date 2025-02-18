@@ -28,10 +28,10 @@ match ($act) {
     // Dashboards
     '/'                 => (new DashboardController())->index(),
 
-    // 'don-hang' =>(new donHangController())->index(),
-    // 'form-sua-don-hang'=>(new donHangController())->edit(),
-    // 'sua-don-hang'=>(new donHangController())->update(),
-    // 'chi-tiet-don-hang'=>(new donHangController())->detailDonHang(),
+    'don-hang' =>(new donHangController())->index(),
+    'form-sua-don-hang'=>(new donHangController())->edit(),
+    'sua-don-hang'=>(new donHangController())->update(),
+    'chi-tiet-don-hang'=>(new donHangController())->detailDonHang(),
 
     
     'login-admin' => (new LoginController())->formLogin(),
