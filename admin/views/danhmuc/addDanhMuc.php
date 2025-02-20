@@ -59,7 +59,7 @@
                             <div class="card-header align-items-center d-flex">
                                 <h4 class="card-title mb-0 flex-grow-1">Thêm danh mục</h4>
                             </div><!-- end card header -->   
-                                <form action="<?= '?act=them-danh-muc' ?>" method="post">
+                                <form action="<?= '?act=them-danh-muc'?>" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="">Tên danh mục</label>

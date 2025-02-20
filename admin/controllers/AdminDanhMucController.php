@@ -1,6 +1,7 @@
 <?php
 class AdminDanhMucController{
     public $modelDanhMuc;
+
     public function __construct(){
         $this->modelDanhMuc = new AdminDanhMuc();
     }
