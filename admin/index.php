@@ -17,7 +17,7 @@ require_once './models/Login.php';
 $act = $_GET['act'] ?? '/';
 
 
-if (!isset($_SESSION['user_admin']) && $act !== 'login-admin' && $act !== 'check-login-admin') {
+if (!isset($_SESSION['user_admin']) && $act !== 'login-admin' && $act !== 'check-login-admin'  && $act !== 'dang-ky' && $act !== 'check-dang-ky') {
     header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
     exit();
 }
@@ -41,5 +41,9 @@ match ($act) {
     'form-password' => (new LoginController())->formPassword(),
     'update-password' => (new LoginController())->updatePassword(),
     'logout-admin' => (new LoginController())->logout(),
+
+    'dang-ky' => (new LoginController())->formDangky(),
+    'check-dang-ky'=>(new LoginController())->DangKy(),
+    'dang-ky-thanh-cong'=>(new LoginController())->formDangKyThanhCong(),
  };
 
