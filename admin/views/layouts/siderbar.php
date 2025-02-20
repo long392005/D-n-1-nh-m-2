@@ -87,6 +87,24 @@
                     </ul>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link menu-link" href="#sidebarSanpham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSanpham">
+                    <i class=" ri-mail-unread-line"></i> <span data-key="t-advance-ui">Quản lý sản phẩm</span>
+                </a>
+                <div class="collapse" id="sidebarSanpham">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="?act=san-pham" class="nav-link">Danh sách Sản Phẩm</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="?act=form-them-san-pham" class="nav-link">Thêm Sản Phẩm</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
+
 
             </ul>
         </div>

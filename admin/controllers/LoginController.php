@@ -44,4 +44,4 @@ class LoginController {
     }
 }
 ?>
->>>>>>> 707f7c3 (Cập nhật code: sửa lỗi match expression, thêm case cho '/' hoặc default)
+

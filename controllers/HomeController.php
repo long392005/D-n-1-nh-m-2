@@ -1,3 +1,4 @@
+
 <?php
 require_once './models/SlideModel.php';
 require_once './models/SanPham.php';     // Mô hình cho Sản Phẩm
@@ -67,4 +68,5 @@ class ListController {
     //     // Truyền dữ liệu ra view
     //     require_once './views/listProduct.php';  // Gọi view listProduct.php để hiển thị
     // }
+
 }
