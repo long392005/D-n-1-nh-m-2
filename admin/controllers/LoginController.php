@@ -15,29 +15,39 @@ class LoginController {
     }
 
     public function Login() {
-        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
+<<<<<<< HEAD
             $pass = $_POST['pass'];
     
 
+=======
+            $pass = $_POST['pass'];    
+>>>>>>> 0a94451 (Cập nhật các tệp liên quan đến login)
             $user = $this->modelLogin->checkLogin($email, $pass);
     
             if (is_array($user)) {
                 $_SESSION['user_admin'] = $user;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0a94451 (Cập nhật các tệp liên quan đến login)
                 if ($user['vai_tro'] == 1) {
                     header('Location: ' . BASE_URL_ADMIN. '?act=/');
                 } elseif ($user['vai_tro'] == 2) {
                     header('Location: ' . BASE_URL. '?act=/');
                 } else {
                     $_SESSION['error'] = 'Tài khoản không hợp lệ.';
-                    header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
+                    header('Location: ' . BASE_URL_ADMIN . '?act=ạdjdjjạdjdjj');
                 }
             } else {
                 $_SESSION['error'] = 'Email hoặc mật khẩu không đúng.';
+<<<<<<< HEAD
                 header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
 
+=======
+                header('Location: ' . BASE_URL_ADMIN . '?act=ssnnnn');
+>>>>>>> 0a94451 (Cập nhật các tệp liên quan đến login)
             }
             exit();
         }
@@ -200,6 +210,7 @@ class LoginController {
             
         }
     }
+<<<<<<< HEAD
     public function formDangky(){
         require_once "./views/acc/formDangKy.php";
     }
@@ -281,6 +292,8 @@ class LoginController {
         require_once './views/acc/dang_ky_thanh_cong.php';
     }
 
+=======
+>>>>>>> 0a94451 (Cập nhật các tệp liên quan đến login)
 
     public function logout(){
         if (isset($_SESSION['user_admin'])) {

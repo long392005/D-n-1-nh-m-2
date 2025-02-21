@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 <?php
+=======
+>>>>>>> 0a94451 (Cập nhật các tệp liên quan đến login)
 
+<?php
 
 class Login {
     public $conn;
@@ -100,6 +104,7 @@ class Login {
     return false;
     }
 
+<<<<<<< HEAD
     public function dangKyUser($ten, $email, $dia_chi, $phone, $pass, $ngay_tao, $gioi_tinh, $avartar, $vai_tro, $trang_thai){
         try{
             $sql = 'INSERT INTO nguoi_dungs (ten, email, dia_chi, phone, pass, ngay_tao, gioi_tinh, avartar, vai_tro, trang_thai)
@@ -125,6 +130,8 @@ class Login {
         }
     }
 
+=======
+>>>>>>> 0a94451 (Cập nhật các tệp liên quan đến login)
     public function isEmailUpdate($email, $nguoi_dung_id) {
         $sql = 'SELECT id FROM nguoi_dungs WHERE email = :email AND id != :nguoi_dung_id LIMIT 1';
         $stmt = $this->conn->prepare($sql);
@@ -133,6 +140,7 @@ class Login {
         $stmt->execute();
         return $stmt->fetch() ? true : false;
     }
+<<<<<<< HEAD
     public function isEmailExists($email) {
         $sql = 'SELECT id FROM nguoi_dungs WHERE email = :email LIMIT 1';
         $stmt = $this->conn->prepare($sql);
@@ -153,5 +161,7 @@ class Login {
             return null;
         }
     }
+=======
+>>>>>>> 0a94451 (Cập nhật các tệp liên quan đến login)
 
 }
