@@ -44,11 +44,13 @@ match ($act) {
 
     'login-admin'       => (new LoginController())->formLogin(),
     'check-login-admin' => (new LoginController())->Login(),
+
     'detail-tai-khoan'  => (new LoginController())->formDetail(),
     'update-tai-khoan'  => (new LoginController())->updateAcc(),
     'form-password'     => (new LoginController())->formPassword(),
     'update-password'   => (new LoginController())->updatePassword(),
     'logout-admin'      => (new LoginController())->logout(),
+
 
     'san-pham'=> (new AdminSanPhamController())->index(),
     'form-them-san-pham' => (new AdminSanPhamController())->formaddSanpham(),
