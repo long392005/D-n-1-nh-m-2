@@ -50,7 +50,7 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Quản lý</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="<?=BASE_URL_ADMIN?>">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
@@ -61,7 +61,7 @@
                 <div class="collapse" id="sidebarDanhMuc">
                     <ul class="nav nav-sm flex-column">
                         <li class="nav-item">
-                            <a href="?act=danh-mucs" class="nav-link">Danh sách</a>
+                            <a href="?act=danh-muc" class="nav-link">Danh sách</a>
                         </li>
                         <li class="nav-item">
                             <a href="?act=form-them-danh-muc" class="nav-link">Thêm mới</a>

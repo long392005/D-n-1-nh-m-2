@@ -3,19 +3,19 @@ session_start();
 // Require file Common
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
+// Require toàn bộ file Controllers
 require_once './controllers/DonHangController.php';
 require_once './controllers/LoginController.php';
 require_once  './controllers/AdminDanhMucController.php';
 require_once  './controllers/AdminSanphamController.php';
+require_once './controllers/DashboardController.php';
+// Require toàn bộ file Models
 
-// Require toàn bộ file Controllers
-require_once 'controllers/DashboardController.php';
 require_once './models/DonHang.php';
 require_once './models/Login.php';
 require_once './models/AdminDanhMuc.php';
 require_once './models/AdminSanpham.php';
-// Require toàn bộ file Models
-
+require_once './models/Dashboard.php';
 // Route
 $act = $_GET['act'] ?? '/';
 
