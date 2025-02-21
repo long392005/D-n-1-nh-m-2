@@ -52,7 +52,9 @@ match ($act) {
     'nguoi-dung' => (new AdminNguoiDungController())->dachSachNguoiDung(),
     'sua-nguoi-dung' => (new AdminNguoiDungController())->postEditUser(),
     'form-sua-nguoi-dung' => (new AdminNguoiDungController())->formEditUser(),
-
+    'khoa-user' => (new AdminNguoiDungController())->resetStatus(),
+    'list-tk-khoa' => (new AdminNguoiDungController())->danhSachTaiKhoanBiKhoa(),
+    'mo-khoa-user' => (new AdminNguoiDungController())->moKhoaUser(),
     'detail-tai-khoan'  => (new LoginController())->formDetail(),
     'update-tai-khoan'  => (new LoginController())->updateAcc(),
     'form-password'     => (new LoginController())->formPassword(),

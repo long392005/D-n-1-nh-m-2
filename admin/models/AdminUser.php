@@ -46,4 +46,44 @@ class AdminUser
             echo 'Lỗi: ' . $e->getMessage();
         }
     }
+
+    public function resetUserStatus($id)
+    {
+        try {
+            $sql = 'UPDATE nguoi_dungs SET trang_thai = 0 WHERE id = :id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id' => $id]);
+            return true;
+        } catch (Exception $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function getLockedUsers(): array
+    {
+        try {
+            $sql = "SELECT * FROM nguoi_dungs WHERE trang_thai = 0";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result ?: [];
+        } catch (Exception $e) {
+            // Ghi log lỗi nếu cần và trả về mảng rỗng
+            return [];
+        }
+    }
+
+    public function unlockUser($id)
+    {
+        try {
+            $sql = "UPDATE nguoi_dungs SET trang_thai = 1 WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id' => $id]);
+            return true;
+        } catch (Exception $e) {
+            // Có thể log lỗi ở đây nếu cần
+            return false;
+        }
+    }
 }

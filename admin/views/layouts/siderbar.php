@@ -111,7 +111,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="?act=form-them-san-pham" class="nav-link">Thêm Sản Phẩm</a>
+                                <a href="?act=list-tk-khoa" class="nav-link">Danh sách tài khoản bị khóa</a>
                             </li>
 
                         </ul>
