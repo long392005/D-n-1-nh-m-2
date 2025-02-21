@@ -133,16 +133,24 @@
 
 .swiper-slide {
     position: relative;
+    width: 100%; /* Chiều rộng toàn màn hình */
+    height: 100vh; /* Chiều cao toàn màn hình */
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    overflow: hidden;
+}
+
+.slideshow-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .slideshow-bg__img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Giúp ảnh phủ toàn bộ khu vực */
 }
 
 .slideshow-text {

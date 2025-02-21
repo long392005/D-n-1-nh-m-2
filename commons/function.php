@@ -22,14 +22,21 @@ function connectDB() {
     }
 }
 // thêm file
-function uploadFile($file,$folderUpload){
-    $pathStorage = $folderUpload .time() .$file['name'];
+
+function uploadFile($file, $folderUpload) {
+    if (!is_array($file) || !isset($file['name'], $file['tmp_name'])) {
+        return null; // Trả về null nếu dữ liệu không hợp lệ
+    }
+
+    $pathStorage = $folderUpload . time() . $file['name'];
     $from = $file['tmp_name'];
     $to = PATH_ROOT . $pathStorage;
-    if(move_uploaded_file($from,$to)){
-        return $pathStorage;
 
+    if (move_uploaded_file($from, $to)) {
+        return $pathStorage;
     }
+
+
     return null;
 }
 

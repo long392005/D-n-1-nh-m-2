@@ -1,3 +1,4 @@
+
 <?php
 
 class AdminSanPhamController
@@ -12,7 +13,8 @@ class AdminSanPhamController
         $this->modelDanhGia = new AdminDanhGia();
 
     }
-    public function danhSachSanPham()
+
+    public function index()
     {
         $listsanpham = $this->modelSanpham->getAllSanPham();
         require_once './views/sanpham/listSanpham.php';
@@ -285,6 +287,5 @@ public function postEditSanpham() {
     }
    
  
-    
     
 }

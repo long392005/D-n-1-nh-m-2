@@ -1,8 +1,5 @@
 <?php 
 session_start();
-
-
-
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
@@ -19,6 +16,7 @@ require_once './models/SlideModel.php';
 
 
 
+
 $act = $_GET['act'] ?? '/';
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
@@ -26,9 +24,12 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // Trang chủ
 
+
     '/' => (new ListController())->home(),
-    // 'list-san-pham'                 => (new ListController())->listProduct(),
- 
+    'list-san-pham'                 => (new ListController())->listProduct(),
+   'chi-tiet-san-pham'=> (new ListController())->detailProduct(),
+   'them-binh-luan'=> (new ListController())->addComment()
     
+
 
 };

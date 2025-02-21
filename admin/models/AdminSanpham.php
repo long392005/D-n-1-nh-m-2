@@ -163,6 +163,7 @@ class AdminSanPham {
         return $stmt->fetchAll();
     }
         public function getBinhLuanFromSanPham($id) {
+
         try {
             $sql = 'SELECT binh_luans.*, nguoi_dungs.ten
                     FROM binh_luans

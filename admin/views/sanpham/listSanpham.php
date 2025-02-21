@@ -84,7 +84,7 @@
                     <th>Giá nhập</th>
                     <th>Giá tiền</th>
                     <th>Số lượng</th>
-                    <th>Lượt xem</th>
+                    <th>Mô tả chi tiết</th>
                     <th>Danh mục sản phẩm</th>
                     <th>Mô tả</th>
                     <th>Trạng thái</th>
@@ -92,6 +92,8 @@
                   </tr>
                 </thead>
                 <tbody>
+
+=
                   <?php foreach ($listsanpham as $key => $sanpham) : ?>
                     <tr>
                       <td><?= $key + 1 ?></td>
@@ -101,7 +103,7 @@
                       <td><?= number_format($sanpham['gia_nhap'], 0, ',', '.')  ?>đ</td>
                       <td><?= number_format($sanpham['gia_san_pham'], 0, ',', '.')  ?>đ</td>
                       <td><?= $sanpham['so_luong'] ?></td>
-                      <td><?= $sanpham['luot_xem'] ?></td>
+                      <td><?= $sanpham['mo_ta_chi_tiet'] ?></td>
                       <td><?= $sanpham['ten_danh_muc'] ?></td>
                       <td><?= $sanpham['mo_ta'] ?></td>
                       <td>

@@ -20,14 +20,12 @@ class AdminDanhMucController{
             if(empty($ten_danh_muc)){
                 $errors['ten_danh_muc'] = 'tên danh mục không được để trống';
             }
-
             if(empty($errors)){
                 $this->modelDanhMuc->InsertDanhMuc($ten_danh_muc,$mo_ta,$trang_thai);
                 header('Location: ?act=danh-muc');
                 exit();
             }else{
                 require_once './views/danhmuc/addDanhMuc.php';
-
             }
         }
     }

@@ -122,7 +122,9 @@
                     <label for="">danh mục</label>
                       <select name="danh_muc_id" class="form-control" id="exampleFormControlSelect1">
                             <option selected disabled>chọn danh mục sản phẩm</option>
+
                             <?php foreach($listdanhmuc as $danhmuc) :?>
+
                                 <option value="<?= $danhmuc['id'] ?>"><?= $danhmuc['ten_danh_muc'] ?></option>
                               <?php endforeach;?>
                       </select>

@@ -1,4 +1,5 @@
 <?php
+
  class SlideModel {
     public $conn;
 
@@ -16,3 +17,4 @@
 }
 
 ?>
+

@@ -71,15 +71,15 @@
                                                 </div>
                                                 <!-- end swiper thumbnail slide -->
                                                 <div class="swiper product-nav-slider mt-2">
-                                                <div class="product-image-thumbs">
-                                                <?php foreach ($listAnhSanPham as $key => $anhSP) : ?>
-                                                  <div class="product-image-thumb <?= $key == 0 ? 'active' : '' ?>">
-                                                    <img src="<?= BASE_URL . $anhSP['link_hinh_anh'] ?>" alt="Product Image">
-                                                  </div>
-                                                <?php endforeach ?>
-                                              </div>
+    <div class="product-image-thumbs">
+        <?php foreach ($listAnhSanPham as $key => $anhSP) : ?>
+            <div class="product-image-thumb <?= $key == 0 ? 'active' : '' ?>">
+                <img src="<?= BASE_URL . $anhSP['link_hinh_anh'] ?>" alt="Product Image" style="width: 80px; height: 80px; object-fit: cover;">
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
 
-                                                </div>
                                                 <!-- end swiper nav slide -->
                                             </div>
                                         </div>

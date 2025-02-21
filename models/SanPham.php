@@ -1,3 +1,4 @@
+
 <?php
 class ListSanPham
 {
@@ -168,4 +169,26 @@ public function getListAnhSanPham($id){
 
     }
 }
+public function getBinhLuanFromSanPham($id) {
+    try {
+        $sql = 'SELECT binh_luans.*, nguoi_dungs.ten
+                FROM binh_luans
+                INNER JOIN nguoi_dungs ON binh_luans.nguoi_dung_id = nguoi_dungs.id
+                WHERE binh_luans.san_pham_id = :id';  // Corrected to use san_pham_id
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetchAll();  // Fetch all reviews for the specified product
+    } catch (Exception $e) {
+        echo 'Lỗi: ' . $e->getMessage();
+    }
 }
+
+public function addComment($idProduct, $idUser, $content) {
+    // Use prepared statement for secure query execution
+    $sql = "INSERT INTO binh_luans (san_pham_id, nguoi_dung_id, noi_dung) VALUES (?, ?, ?)";
+    // var_dump($sql); exit();
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([$idProduct, $idUser, $content]);
+}
+}
+
