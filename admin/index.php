@@ -31,11 +31,10 @@ $act = $_GET['act'] ?? '/';
 
 if (!isset($_SESSION['user_admin']) && $act !== 'login-admin' && $act !== 'check-login-admin'  && $act !== 'dang-ky' && $act !== 'check-dang-ky') {
 
+
     header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
     exit();
 }
-
-
 
 match ($act) {
     // Dashboards

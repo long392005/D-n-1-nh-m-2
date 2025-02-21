@@ -7,6 +7,9 @@ class LoginController {
     public function __construct() {
         $this->modelLogin = new Login();
     }
+    public function index(){
+        $nguoidungs= $this->modelLogin
+    }
 
     public function formLogin(){
         
