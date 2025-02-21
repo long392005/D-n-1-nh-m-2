@@ -4,24 +4,31 @@ session_start();
 // Require file Common
 require_once '../commons/env.php'; // Khai báo biến môi trường
 require_once '../commons/function.php'; // Hàm hỗ trợ
+// Require toàn bộ file Controllers
 require_once './controllers/DonHangController.php';
 require_once './controllers/LoginController.php';
 
 require_once  './controllers/AdminDanhMucController.php';
 require_once  './controllers/AdminSanphamController.php';
+<<<<<<< HEAD
 // Require toàn bộ file Controllers
 require_once 'controllers/DashboardController.php';
+=======
+require_once './controllers/DashboardController.php';
+// Require toàn bộ file Models
+
+>>>>>>> 12e65b11f4f880e76eb74fb443a79d27d0917e10
 require_once './models/DonHang.php';
 require_once './models/Login.php';
 require_once './models/AdminDanhMuc.php';
 require_once './models/AdminSanpham.php';
-// Require toàn bộ file Models
-
+require_once './models/Dashboard.php';
 // Route
 $act = $_GET['act'] ?? '/';
 
 
-if (!isset($_SESSION['user_admin']) && $act !== 'login-admin' && $act !== 'check-login-admin') {
+
+if (!isset($_SESSION['user_admin']) && $act !== 'login-admin' && $act !== 'check-login-admin'  && $act !== 'dang-ky' && $act !== 'check-dang-ky') {
     header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
     exit();
 }
@@ -45,6 +52,9 @@ match ($act) {
 
     'login-admin'       => (new LoginController())->formLogin(),
     'check-login-admin' => (new LoginController())->Login(),
+    'dang-ky' => (new LoginController())->formDangky(),
+    'check-dang-ky'=>(new LoginController())->DangKy(),
+    'dang-ky-thanh-cong'=>(new LoginController())->formDangKyThanhCong(),
 
     'detail-tai-khoan'  => (new LoginController())->formDetail(),
     'update-tai-khoan'  => (new LoginController())->updateAcc(),

@@ -95,7 +95,7 @@
                         </div>
 
                         <div class="mt-4 text-center">
-                            <p class="mb-0">Tôi không có tài khoản? <a href="?act=dang-ki" class="fw-bold text-primary text-decoration-underline">Đăng kí</a></p>
+                            <p class="mb-0">Tôi không có tài khoản? <a href="?act=dang-ky" class="fw-bold text-primary text-decoration-underline">Đăng kí</a></p>
                         </div>
                     </div>
                 </div>

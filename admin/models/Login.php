@@ -100,6 +100,31 @@ class Login {
     return false;
     }
 
+    public function dangKyUser($ten, $email, $dia_chi, $phone, $pass, $ngay_tao, $gioi_tinh, $avartar, $vai_tro, $trang_thai){
+        try{
+            $sql = 'INSERT INTO nguoi_dungs (ten, email, dia_chi, phone, pass, ngay_tao, gioi_tinh, avartar, vai_tro, trang_thai)
+                    VALUES (:ten, :email, :dia_chi, :phone, :pass, :ngay_tao, :gioi_tinh, :avartar, :vai_tro, :trang_thai)';
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt ->bindParam(':ten', $ten);
+            $stmt ->bindParam(':email', $email);
+            $stmt ->bindParam(':dia_chi', $dia_chi);
+            $stmt ->bindParam(':phone', $phone);
+            $stmt ->bindParam(':pass', $pass);
+            $stmt ->bindParam(':ngay_tao', $ngay_tao);
+            $stmt ->bindParam(':gioi_tinh', $gioi_tinh);
+            $stmt ->bindParam(':avartar', $avartar);
+            $stmt ->bindParam(':vai_tro', $vai_tro);
+            $stmt ->bindParam(':trang_thai', $trang_thai);
+            $stmt->execute();
+            return true;
+
+        }catch(PDOException $e){
+            echo 'Loi: '. $e->getMessage();
+            return false;
+        }
+    }
+
     public function isEmailUpdate($email, $nguoi_dung_id) {
         $sql = 'SELECT id FROM nguoi_dungs WHERE email = :email AND id != :nguoi_dung_id LIMIT 1';
         $stmt = $this->conn->prepare($sql);
@@ -108,6 +133,25 @@ class Login {
         $stmt->execute();
         return $stmt->fetch() ? true : false;
     }
+    public function isEmailExists($email) {
+        $sql = 'SELECT id FROM nguoi_dungs WHERE email = :email LIMIT 1';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch() ? true : false;
+        
+    }
+    public function getUserByEmail($email) {
+        try {
+            $sql = 'SELECT * FROM nguoi_dungs WHERE email = :email LIMIT 1';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            return $stmt->fetch();
+        } catch (Exception $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+            return null;
+        }
+    }
 
 }
-
