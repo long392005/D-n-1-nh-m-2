@@ -195,6 +195,87 @@ class LoginController {
             
         }
     }
+    public function formDangky(){
+        require_once "./views/acc/formDangKy.php";
+    }
+    public function DangKy(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $ten = trim($_POST['ten'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+            $pass = trim($_POST['pass'] ?? '');
+            $confirm_pass = trim($_POST['confirm_pass'] ?? '');
+            $dia_chi = trim($_POST['dia_chi'] ?? '');
+            $phone = trim($_POST['phone'] ?? '');
+            $ngay_tao = date('Y-m-d');
+            $gioi_tinh = $_POST['gioi_tinh'] ?? '';
+            $avartar = $_FILES['avartar'] ?? '';
+            $file_thumb= uploadFile($avartar , './uploads/');
+            $errors = [];
+            if (empty($ten)) {
+                $errors['ten'] = 'Tên không được để trống.';
+            }
+            if (empty($email)) {
+                $errors['email'] = 'Email không được để trống.';
+            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors['email'] = 'Email không hợp lệ.';
+            }
+           
+            if (empty($gioi_tinh)) {
+                $errors['gioi_tinh'] = 'Vui lòng chọn giới tính.';
+            }
+            if (empty($dia_chi)) {
+                $errors['dia_chi'] = 'Vui lòng chọn địa chỉ.';
+            }
+            if (empty($phone)) {
+                $errors['phone'] = 'Vui lòng chọn số điện thoại.';
+            }
+            if (empty($pass)) {
+                $errors['pass'] = 'Mật khẩu không được để trống.';
+            }
+            if (empty($confirm_pass)) {
+                $errors['confirm_pass'] = 'Xác nhận mật khẩu không được để trống.';
+            } elseif ($pass !== $confirm_pass) {
+                $errors['confirm_pass'] = 'Mật khẩu xác nhận không khớp.';
+            }
+            if(!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                $_SESSION['form_data']=$_POST;
+                header('Location: '. BASE_URL_ADMIN.'?act=dang-ky');
+                exit();
+            }
+            if ($this->modelLogin->isEmailExists($email)) {
+                $_SESSION['errorsEmail'] = ['Email đã được sử dụng.'];
+                $_SESSION['form_data'] = $_POST;
+                header('Location: '. BASE_URL_ADMIN.'?act=dang-ky');
+                exit();
+            }
+            $vai_tro = 2;
+            $trang_thai = 1;
+            $result = $this->modelLogin->dangKyUser
+            ($ten, $email, $dia_chi, $phone, $pass, $ngay_tao, $gioi_tinh, $file_thumb, $vai_tro, $trang_thai);
+            if ($result) {
+                $user = $this->modelLogin->getUserByEmail($email);
+                    $_SESSION['user_admin'] = [
+                        'id' => $user['id'],
+                        'ten' => $user['ten'],
+                        'email' => $user['email'],
+                        'vai_tro' => $user['vai_tro'],
+                        'trang_thai' => $user['trang_thai'],
+                        'gioi_tinh' => $user['gioi_tinh'],
+                        'avartar' => $user['avartar'],
+                    ];
+                    unset($_SESSION['errors']);
+                    unset($_SESSION['form_data']);
+                    header('Location: ' . BASE_URL_ADMIN . '?act=dang-ky-thanh-cong');
+                    exit();
+            }
+
+        }
+    }
+    public function formDangKyThanhCong(){
+        require_once './views/acc/dang_ky_thanh_cong.php';
+    }
+
 
     public function logout(){
         if (isset($_SESSION['user_admin'])) {
@@ -205,8 +286,3 @@ class LoginController {
     }
 }
 ?>
-
-
-
-
-
