@@ -2,6 +2,8 @@
 
 class DashboardController {
 
+    public $modelDashboard;
+
     public function __construct(){
         $this->modelDashboard = new dashboard();
     }
