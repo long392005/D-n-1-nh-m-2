@@ -51,8 +51,8 @@
                                     <div class="col-12">
                                         <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                             <div class="flex-grow-1">
-                                                <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
-                                                <p class="text-muted mb-0">Here's what's happening with your store today.</p>
+                                                <h4 class="fs-16 mb-1">Xin chào, <?php echo $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!</h4>
+                                                <p class="text-muted mb-0">Chào mừng bạn đến với trang quản trị</p>
                                             </div>
                                             <div class="mt-3 mt-lg-0">
                                                 <form action="javascript:void(0);">
