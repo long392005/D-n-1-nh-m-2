@@ -50,60 +50,74 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Quản lý</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="<?=BASE_URL_ADMIN?>">
+                    <a class="nav-link menu-link" href="<?= BASE_URL_ADMIN ?>">
                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link menu-link" href="#sidebarDanhMuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
-                    <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
-                </a>
-                <div class="collapse" id="sidebarDanhMuc">
-                    <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                            <a href="?act=danh-muc" class="nav-link">Danh sách</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="?act=form-them-danh-muc" class="nav-link">Thêm mới</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                    <a class="nav-link menu-link" href="#sidebarDanhMuc" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDanhMuc">
+                        <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Danh mục sản phẩm</span>
+                    </a>
+                    <div class="collapse" id="sidebarDanhMuc">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=danh-muc" class="nav-link">Danh sách</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="?act=form-them-danh-muc" class="nav-link">Thêm mới</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
 
                 <li class="nav-item">
-                <a class="nav-link menu-link" href="#sidebarHoadon" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebaHoadon">
-                    <i class=" ri-file-paper-2-fill"></i> <span data-key="t-advance-ui"> Quản lí Đơn hàng</span>
-                </a>
-                <div class="collapse" id="sidebarHoadon">
-                    <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                            <a href="?act=don-hang" class="nav-link">Danh sách hóa đơn</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link menu-link" href="#sidebarSanpham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSanpham">
 
+                    <a class="nav-link menu-link" href="#sidebarHoadon" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebaHoadon">
+                        <i class=" ri-file-paper-2-fill"></i> <span data-key="t-advance-ui"> Quản lí Đơn hàng</span>
+                    </a>
+                    <div class="collapse" id="sidebarHoadon">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=don-hang" class="nav-link">Danh sách hóa đơn</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarSanpham" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSanpham">
+                        <i class=" ri-mail-unread-line"></i> <span data-key="t-advance-ui">Quản lý Sản phẩm</span>
+                    </a>
+                    <div class="collapse" id="sidebarSanpham">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=san-pham" class="nav-link">Danh sách Sản Phẩm</a>
+                            </li>
 
-                    <i class=" ri-mail-unread-line"></i> <span data-key="t-advance-ui">Quản lý Sản phẩm</span>
+                            <li class="nav-item">
+                                <a href="?act=form-them-san-pham" class="nav-link">Thêm Sản Phẩm</a>
+                            </li>
 
-                </a>
-                <div class="collapse" id="sidebarSanpham">
-                    <ul class="nav nav-sm flex-column">
-                        <li class="nav-item">
-                            <a href="?act=san-pham" class="nav-link">Danh sách Sản Phẩm</a>
-                        </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarNguoiDung" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarNguoiDung">
+                        <i class=" ri-user-line"></i> <span data-key="t-advance-ui">Quản lý Người dùng</span>
+                    </a>
+                    <div class="collapse" id="sidebarNguoiDung">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=nguoi-dung" class="nav-link">Danh sách Người dùng</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a href="?act=form-them-san-pham" class="nav-link">Thêm Sản Phẩm</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </li>
+                            <li class="nav-item">
+                                <a href="?act=list-tk-khoa" class="nav-link">Danh sách tài khoản bị khóa</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

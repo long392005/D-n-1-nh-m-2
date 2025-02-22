@@ -8,7 +8,7 @@ class LoginController {
         $this->modelLogin = new Login();
     }
     public function index(){
-        $nguoidungs= $this->modelLogin
+        $nguoidungs= $this->modelLogin;
     }
 
     public function formLogin(){
