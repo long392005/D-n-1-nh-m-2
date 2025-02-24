@@ -14,7 +14,7 @@ require_once './controllers/UserController.php';
 // Require toàn bộ file Models
 require_once './models/SanPham.php';
 require_once './models/SlideModel.php';
-
+require_once './models/User.php';
 
 // Require toàn bộ file Models
 
@@ -32,7 +32,12 @@ match ($act) {
     '/' => (new ListController())->home(),
     'list-san-pham'                 => (new ListController())->listProduct(),
    'chi-tiet-san-pham'=> (new ListController())->detailProduct(),
-   'them-binh-luan'=> (new ListController())->addComment()
+   'them-binh-luan'=> (new ListController())->addComment(),
+
+    'detail-tai-khoan' =>(new UserController())->formDetail(),
+    'update-tai-khoan' =>(new UserController)->updateAcc(),
+    'form-password' =>(new UserController)->formPassword(),
+    'update-password' =>(new UserController)->updatePassword(),
     
 
 
