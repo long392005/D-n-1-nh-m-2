@@ -27,7 +27,7 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Trang chủ
-
+    'logout-client' => (new LogoutController())->logout(),
 
     '/' => (new ListController())->home(),
     'list-san-pham'                 => (new ListController())->listProduct(),
