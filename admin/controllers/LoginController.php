@@ -33,13 +33,11 @@ class LoginController {
                     header('Location: ' . BASE_URL. '?act=/');
                 } else {
                     $_SESSION['error'] = 'Tài khoản không hợp lệ.';
-                    header('Location: ' . BASE_URL_ADMIN . '?act=ạdjdjjạdjdjj');
+                    header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
                 }
             } else {
                 $_SESSION['error'] = 'Email hoặc mật khẩu không đúng.';
                 header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
-
-
             }
             exit();
         }

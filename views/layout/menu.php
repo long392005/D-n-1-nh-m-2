@@ -103,7 +103,7 @@ $nguoiDung = $_SESSION['user_admin'] ?? null; // Kiểm tra nếu có thông tin
         <span class="align-middle">Đơn hàng</span>
       </a>
       <!-- Logout -->
-      <a class="dropdown-item" href="?act=logout-admin">
+      <a class="dropdown-item" href="?act=logout-client">
         <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
         <span class="align-middle" data-key="t-logout">Đăng xuất</span>
       </a>

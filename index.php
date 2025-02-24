@@ -6,6 +6,10 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
+require_once './controllers/LogoutController.php';
+require_once './controllers/UserController.php';
+
+
 
 // Require toàn bộ file Models
 require_once './models/SanPham.php';
