@@ -7,11 +7,14 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/HomeController.php';
 require_once './controllers/LogoutController.php';
+require_once './controllers/UserController.php';
+
 
 
 
 // Require toàn bộ file Models
 require_once './models/SanPham.php';
+require_once './models/User.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -22,5 +25,13 @@ match ($act) {
     // Trang chủ
     '/'                 => (new ListController())->home(),
     'logout-client' => (new LogoutController())->logout(),
+
+    'detail-tai-khoan' =>(new UserController())->formDetail(),
+    'update-tai-khoan' =>(new UserController)->updateAcc(),
+    'form-password' =>(new UserController)->formPassword(),
+    'update-password' =>(new UserController)->updatePassword(),
+
+
+
 
 };
