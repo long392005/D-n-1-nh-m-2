@@ -36,7 +36,7 @@ class AdminUser
     public function UpdateUser($id, $ten, $email, $dia_chi, $phone, $pass, $ngay_tao,  $avartar,  $trang_thai)
     {
         try {
-            $sql = 'UPDATE nguoi_dungs SET ten = :ten, email = :email, dia_chi = :dia_chi, phone = :phone, pass = :pass, ngay_tao = :ngay_tao, gioi_tinh = :gioi_tinh, avartar = :avartar, vai_tro = :vai_tro, trang_thai = :trang_thai WHERE id = :id';
+            $sql = 'UPDATE nguoi_dungs SET ten = :ten, email = :email, dia_chi = :dia_chi, phone = :phone, pass = :pass, ngay_tao = :ngay_tao, avartar = :avartar, trang_thai = :trang_thai WHERE id = :id';
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id' => $id, ':ten' => $ten, ':email' => $email, ':dia_chi' => $dia_chi, ':phone' => $phone, ':pass' => $pass, ':ngay_tao' => $ngay_tao, ':avartar' => $avartar, ':trang_thai' => $trang_thai]);

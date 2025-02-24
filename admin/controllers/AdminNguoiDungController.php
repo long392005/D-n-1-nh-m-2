@@ -22,7 +22,7 @@ class AdminNguoiDungController
     public function formEditUser()
     {
 
-        $id = $_GET['id_nguoi_dung'];
+        $id = $_GET['id'];
         $user = $this->modelNguoiDung->getOneUser($id);
 
         if ($user) {
