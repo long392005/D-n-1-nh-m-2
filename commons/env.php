@@ -4,8 +4,8 @@
 // Khai báo dưới dạng HẰNG SỐ để không phải dùng $GLOBALS
 
 
-define('BASE_URL'   , 'http://localhost/base_du_an_1/');
-define('BASE_URL_ADMIN'       , 'http://localhost/base_du_an_1/admin/');
+define('BASE_URL'   , 'http://localhost/D-n-1-nh-m-2/');
+define('BASE_URL_ADMIN'       , 'http://localhost/D-n-1-nh-m-2/admin/');
 
 
 
