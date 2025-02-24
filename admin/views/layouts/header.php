@@ -1,4 +1,3 @@
-
 <?php
 $nguoiDung = $_SESSION['user_admin'] ?? null;
 ?>
@@ -61,12 +60,10 @@ $nguoiDung = $_SESSION['user_admin'] ?? null;
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-
                         <h6 class="dropdown-header">Welcome <?php echo $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!</h6>
                         <a class="dropdown-item" href="?act=detail-tai-khoan&id_nguoi_dung=<?= $nguoiDung['id'] ?? ''; ?>"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1">
                         </i> <span class="align-middle">Tài khoản</span></a>
                         <a class="dropdown-item" href="?act=logout-admin"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Đăng xuất</span></a>
-
                     </div>
                 </div>
             </div>
