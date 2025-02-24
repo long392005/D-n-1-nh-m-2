@@ -12,6 +12,6 @@ class DashboardController {
         $tongDonHang = $this->modelDashboard->countDonHang();
         $tongThuNhap = $this->modelDashboard->countThuNhap();
         $tongTaiKhoan = $this->modelDashboard->countTaiKhoan();
-        require_once "./models/Dashboard.php";
+        require_once ".views/Dashboard.php";
     }
 }
