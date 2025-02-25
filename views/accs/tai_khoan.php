@@ -50,17 +50,20 @@
                             <div class="row">
                                 <div class="card-body p-4">
                                     <div class="text-center">
-                                        <div class="profile-user position-relative d-inline-block mx-auto mb-4">
+                                       <div class="profile-user position-relative d-inline-block mx-auto mb-4">
                                             <img
                                                 src="<?= isset($nguoiDung['avartar']) && is_string($nguoiDung['avartar']) ? BASE_URL . $nguoiDung['avartar'] : BASE_URL . './uploads/iconn.jpg'; ?>"
                                                 class="rounded-circle img-thumbnail user-profile-image material-shadow"
                                                 style="width: 100px; height: 100px; object-fit: cover;"
                                                 alt="user-profile-image">
 
-                                            <div class="avatar-xs p-0 rounded-circle profile-photo-edit position-absolute bottom-0 end-0">
-                                                <input id="profile-img-file-input" type="file" name="avartar" class="d-none">
-                                                <label for="profile-img-file-input" class="profile-photo-edit avatar-xs d-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm">
-                                                    <i class="ri-camera-fill"></i>
+
+                                            <div class="avatar-xs p-0 rounded-circle profile-photo-edit">
+                                                <input id="profile-img-file-input" type="file" name="avartar" class="profile-img-file-input">
+                                                <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
+                                                    <span class="avatar-title rounded-circle bg-light text-body material-shadow">
+                                                        <i class="ri-camera-fill"></i>
+                                                    </span>
                                                 </label>
                                             </div>
                                         </div>
