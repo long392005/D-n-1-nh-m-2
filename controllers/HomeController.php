@@ -145,7 +145,7 @@ class ListController {
                 if ($detail['san_pham_id'] == $san_pham_id) {
                     $newSoLuong = $detail['so_luong'] + $so_luong;
                     $this->modelGioHang->updateSoLuong($gioHang['id'], $san_pham_id, $newSoLuong);
-                    $checkSanPham = true;
+                    $checkSanPham = true;   
                     break;
                 }
             }
@@ -157,7 +157,7 @@ class ListController {
             header("Location: " . BASE_URL . "?act=gio-hang");
         } else {
             echo "<script>alert('Bạn cần đăng nhập để thêm vào giỏ hàng.');</script>";
-            echo "<script>window.location.href = '?act=logout-admin';</script>";
+            echo "<script>window.location.href = '" . BASE_URL_ADMIN . "?act=login';</script>";
         }
     }
 }
