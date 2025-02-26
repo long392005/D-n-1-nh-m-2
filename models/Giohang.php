@@ -74,7 +74,6 @@ class GioHang {
             echo "Lỗi: " . $e->getMessage();
         }
     }
-    
     public function cleaDetailGioHang($giohangid){
         try {
             $sql = 'DELETE FROM chi_tiet_gio_hangs WHERE gio_hang_id = :gio_hang_id';
