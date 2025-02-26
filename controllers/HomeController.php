@@ -7,13 +7,18 @@ class ListController {
     public $modelSanPham;
     public $modelGioHang;
     public $modelSlide;
+    public $modelDatHang;
     public $modelNguoiDung;
+
+    public $modelDonHang;
     public function __construct() {
         // Khởi tạo models với cơ sở dữ liệu
         $this->modelSanPham = new ListSanPham();  // Mô hình Sản Phẩm
         $this->modelSlide = new SlideModel();  
         $this->modelGioHang = new GioHang();  
         $this->modelNguoiDung = new NguoiDung(); 
+        $this->modelDatHang = new DatHang();
+        $this->modelDonHang = new DonHangs();
     }
     public function home() {
         // Lấy danh sách sản phẩm
@@ -144,7 +149,7 @@ class ListController {
             foreach ($chiTietGioHang as $detail) {
                 if ($detail['san_pham_id'] == $san_pham_id) {
                     $newSoLuong = $detail['so_luong'] + $so_luong;
-                    $this->modelGioHang->updateSoLuong($gioHang['id'], $san_pham_id, $newSoLuong);
+                    $this->modelGioHang->updateData($gioHang['id'], $san_pham_id, $newSoLuong);
                     $checkSanPham = true;   
                     break;
                 }
@@ -208,4 +213,108 @@ public function gioHang() {
             exit();
         }
     }
+    public function formDat(){
+        if (isset($_SESSION['user_admin'])) {
+            $id = $_SESSION['user_admin']['id'];
+            $user = $this->modelNguoiDung->getTaiKhoanFromEmail($id);
+            $gioHang = $this->modelGioHang->getGioHangFromUser($user['id'] );
+            if (!$gioHang) {
+                $gioHangId = $this->modelGioHang->addGioHang($user['id']);
+                $gioHang = ['id' => $gioHangId];
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+
+            }else{
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            }
+            require_once './views/dathang/dat_hang.php';
+        }else{
+            var_dump('Chưa đăng nhập'); die;
+        }
+    }
+    public function postThanhToan()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Lấy thông tin từ form
+            $ten_nguoi_nhan = $_POST['ten_nguoi_nhan'];
+            $email_nguoi_nhan = $_POST['email_nguoi_nhan'];
+            $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan'];
+            $dia_chi_nguoi_nhan = $_POST['dia_chi_nguoi_nhan'];
+            $ghi_chu = $_POST['ghi_chu'];
+            $tong_tien = $_POST['tong_tien'];
+            $phuong_thuc_thanh_toan_id = $_POST['phuong_thuc_thanh_toan_id'];
+            $ngay_dat = date("Y-m-d");
+            $trang_thai_id = 1; // Trạng thái mặc định
+    
+            // Lấy thông tin người dùng từ session
+            $userId = $_SESSION['user_admin']['id'];
+            $user = $this->modelNguoiDung->getTaiKhoanFromEmail($userId);
+            $nguoi_dung_id = $user['id'];
+    
+            // Tạo mã đơn hàng ngẫu nhiên
+            $ma_don_hang = 'DH' . rand(1000, 9999);
+            
+    
+            // Thêm đơn hàng
+            $donHang = $this->modelDatHang->addDonHang(
+                $nguoi_dung_id,
+                $ten_nguoi_nhan,
+                $email_nguoi_nhan,
+                $sdt_nguoi_nhan,
+                $dia_chi_nguoi_nhan,
+                $ghi_chu,
+                $phuong_thuc_thanh_toan_id,
+                $tong_tien,
+                $ngay_dat,
+                $ma_don_hang,
+                $trang_thai_id
+            );
+    
+            if ($donHang) {
+                // Kiểm tra và xử lý giỏ hàng
+                $gioHang = $this->modelGioHang->getGioHangFromUser($nguoi_dung_id);
+    
+                if ($gioHang) {
+                    $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+    
+                    foreach ($chiTietGioHang as $item) {
+                        $sanPhamId = $item['san_pham_id'];
+                        $soLuong = $item['so_luong'];
+                        $donGia = $item['gia_khuyen_mai'] ?? $item['gia_san_pham'];
+    
+                        // Kiểm tra tồn kho trước khi trừ
+                     
+    
+                        // Thêm chi tiết đơn hàng
+                        $this->modelDonHang->addChiTietDonHang(
+                            $donHang,
+                            $sanPhamId,
+                            $donGia,
+                            $soLuong,
+                            $donGia * $soLuong
+                        );
+    
+                        // Cập nhật tồn kho
+                        $this->modelDatHang->updateSoLuongTonKho($sanPhamId, $soLuong);
+                    }
+    
+                    // Xóa giỏ hàng sau khi thêm vào đơn hàng
+                    $this->modelGioHang->cleaDetailGioHang($gioHang['id']);
+                    $this->modelGioHang->clearGioHang($nguoi_dung_id);
+                }
+            }
+    
+           
+            $_SESSION['user_admin']['ma_don_hang'] = $ma_don_hang;
+            $_SESSION['user_admin']['tong_tien'] = $tong_tien;
+    
+    
+            header('Location: ' . BASE_URL . '?act=dat-hang-thanh-cong');
+            exit();
+        }
+    }
+    public function formDatHangThanhCong()
+    {
+        require_once './views/dathang/dat_hang_thanh_cong.php';
+    }
+
 }

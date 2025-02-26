@@ -93,7 +93,7 @@ class GioHang {
     
             // Nếu sản phẩm đã tồn tại trong giỏ hàng -> Cập nhật
             if ($so_luong_hien_tai > 0) {
-                $this->updateSoLuong($gio_hang_id, $san_pham_id, $tong_so_luong);
+                $this->updateData($gio_hang_id, $san_pham_id, $tong_so_luong);
             } else {
                 // Nếu chưa tồn tại -> Thêm mới
                 $this->addDetailGioHang($gio_hang_id, $san_pham_id, $so_luong_them);

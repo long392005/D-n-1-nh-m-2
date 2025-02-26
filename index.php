@@ -8,11 +8,14 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 require_once './controllers/HomeController.php';
 require_once './controllers/LogoutController.php';
 require_once './controllers/UserController.php';
+
 // Require toàn bộ file Models
 require_once './models/SanPham.php';
 require_once './models/SlideModel.php';
 require_once './models/User.php';
 require_once './models/Giohang.php';
+require_once './models/DatHang.php';
+require_once './models/Donhang.php';
 
 $act = $_GET['act'] ?? '/';
 
@@ -37,5 +40,9 @@ match ($act) {
     'them-gio-hang'                 => (new ListController())->addGioHang(),
    'update-gio-hang'=> (new ListController())->updateGioHang(),
    'xoa-gio-hang'=> (new ListController())->delete(),
+
+   'form-dat-hang'=>(new ListController())->formDat(),
+   'xu-ly-dat-hang'=>(new ListController)->postThanhToan(),
+   'dat-hang-thanh-cong'=>(new ListController)->formDatHangThanhCong(),
 
 };
