@@ -381,20 +381,17 @@ $nguoiDung = $_SESSION['user_admin'] ?? null; // Kiểm tra nếu có thông tin
     <?php
     // Lấy thông tin tổng tiền từ session
     $tongTien = isset($_SESSION['user_admin']['tong_tien']) ? $_SESSION['user_admin']['tong_tien'] : 0;
-    
-
-    // Thêm phí vận chuyển và thuế
-    $phiVanChuyen = 30000;
-    
-    $tongCong = $tongTien - $phiVanChuyen ;
-    // var_dump($tongTien); exit;
+ 
+ 
     ?>
     
     <p>Mã đơn hàng của bạn: <span class="ma_don_hang"><?= $_SESSION['user_admin']['ma_don_hang'] ?></span></p>
-    <p>Tổng số tiền: <span class="tong_tien"><?= number_format($tongTien + ($tongCong * 0.15), 0, ',', '.') . 'đ' ?></span></p>
+    <p>Tổng số tiền: <span class="tong_tien"><?= number_format($tongTien, 0, ',', '.') . 'đ' ?></span></p>
+
     <p>Chúng tôi sẽ liên hệ với bạn để xác nhận đơn hàng trong thời gian sớm nhất.</p>
     <a href="<?= BASE_URL . '?act=list-san-pham' ?>">Tiếp tục mua sắm</a>
 </div>
+
 
 
     <div class="mb-5 pb-xl-5"></div>

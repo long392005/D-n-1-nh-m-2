@@ -226,7 +226,7 @@
                                         <h5 class="mb-0">Thông tin người nhận</h5>
                                     </div>
                                     <div class="card-body">
-                                       
+
 
                                         <!-- Tên người nhận -->
                                         <div class="mb-3">
@@ -259,7 +259,7 @@
                                         </div>
 
                                         <!-- Tổng tiền -->
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -286,7 +286,7 @@
                                                         <td>
                                                             <a href="#" class="text-decoration-none text-dark"><?= $sanPham['ten_san_pham'] ?> <strong>x <?= $sanPham['so_luong'] ?></strong></a>
                                                         </td>
-                                                        <td><img src="<?= BASE_URL . $sanPham['hinh_anh']?>" style="width:80px;" alt=""></td>
+                                                        <td><img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="width:80px;" alt=""></td>
                                                         <td>
                                                             <strong><?= number_format($sanPham['gia_khuyen_mai'] * $sanPham['so_luong'], 0, ',', '.') ?> VND</strong>
                                                         </td>
@@ -311,9 +311,10 @@
 
                                                 <tr>
                                                     <td>Tổng tiền thanh toán </td>
-                                                    <input type="hidden" name="tong_tien" value="<?= $tongGioHang + 30000 ?>">
+                                                    <input type="hidden" name="tong_tien" value="<?= $tongGioHang + 30000 + ($tongGioHang * 0.15) ?>">
                                                     <td><strong><?= number_format($tongGioHang + 30000 + ($tongGioHang * 0.15)) . 'đ' ?></strong></td>
                                                 </tr>
+
                                             </tfoot>
                                         </table>
 
