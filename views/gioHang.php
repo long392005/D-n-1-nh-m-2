@@ -263,7 +263,7 @@
                                     <form action="?act=xoa-gio-hang" method="POST" onsubmit="return confirm('Bạn có đồng ý xóa không?')">
                                         <input type="hidden" name="gio_hang_id" value="<?= $sanPham['id'] ?>">
                                         <button type="submit" class="link-danger fs-15" style="border: none; background: none; padding: 0;">
-                                            <i class="ri-delete-bin-line" style="font-size: 20px;"></i>
+                                            <i class="ri-delete-bin-line" style="font-size: 20px;">xoa</i>
                                         </button>
                                     </form>
                                 </td>

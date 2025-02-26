@@ -187,7 +187,7 @@
 
 
     <!-- Header Type 1 -->
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/base_du_an_1/views/layout/menu.php'); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/D-n-1-nh-m-2/views/layout/menu.php'); ?>
     <main>
         <section class="shop-checkout container">
             <h2 class="page-title">Giỏ hàng</h2>
@@ -199,14 +199,14 @@
                         <em>Giỏ hàng</em>
                     </span>
                 </a>
-                <a href="#" class="checkout-steps__item">
+                <a href="#" class="checkout-steps__item active">
                     <span class="checkout-steps__item-number">02</span>
                     <span class="checkout-steps__item-title">
                         <span>Thanh toán</span>
                         <em>Thanh toán</em>
                     </span>
                 </a>
-                <a href="#" class="checkout-steps__item">
+                <a href="#" class="checkout-steps__item active">
                     <span class="checkout-steps__item-number">03</span>
                     <span class="checkout-steps__item-title">
                         <span>Confirmation</span>
@@ -288,8 +288,16 @@
                                                         </td>
                                                         <td><img src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" style="width:80px;" alt=""></td>
                                                         <td>
-                                                            <strong><?= number_format($sanPham['gia_khuyen_mai'] * $sanPham['so_luong'], 0, ',', '.') ?> VND</strong>
-                                                        </td>
+                                                        <?php
+                                                        $tongTien=0;
+                                                        if ($sanPham['gia_san_pham']){
+                                                            $tongTien = $sanPham['gia_san_pham'] * $sanPham['so_luong'];
+                                                        }else{
+                                                            $tongTien = $sanPham['gia_khuyen_mai'] * $sanPham['so_luong'];
+                                                        }
+                                                        $tongGioHang += $tongTien;
+                                                        echo number_format($tongTien);
+                                                        ?>
                                                     </tr>
                                                     <?php $tongGioHang += $sanPham['gia_khuyen_mai'] * $sanPham['so_luong']; ?>
                                                 <?php endforeach; ?>
@@ -297,7 +305,7 @@
                                             <tfoot>
                                                 <tr>
                                                     <td>Tổng tiền sản phẩm</td>
-                                                    <td><strong><?= number_format($tongGioHang) . 'đ' ?></strong></td>
+                                                    <td><strong><?= number_format($tongGioHang, 0, ',', '.') ?> đ</strong></td>
                                                 </tr>
                                                 <tr>
                                                     <td>Thuế(15%) </td>
@@ -314,7 +322,6 @@
                                                     <input type="hidden" name="tong_tien" value="<?= $tongGioHang + 30000 + ($tongGioHang * 0.15) ?>">
                                                     <td><strong><?= number_format($tongGioHang + 30000 + ($tongGioHang * 0.15)) . 'đ' ?></strong></td>
                                                 </tr>
-
                                             </tfoot>
                                         </table>
 

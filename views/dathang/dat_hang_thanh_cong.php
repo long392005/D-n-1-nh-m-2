@@ -365,7 +365,7 @@ $nguoiDung = $_SESSION['user_admin'] ?? null; // Kiểm tra nếu có thông tin
                         <em>Thanh toán</em>
                     </span>
                 </a>
-                <a href="./shop_order_complete.html" class="checkout-steps__item">
+                <a href="./shop_order_complete.html" class="checkout-steps__item active">
                     <span class="checkout-steps__item-number">03</span>
                     <span class="checkout-steps__item-title">
                         <span>Confirmation</span>
