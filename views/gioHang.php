@@ -230,7 +230,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="shopping-cart__product-price"><?= number_format($sanPham['gia_san_pham'], 0, ',', '.') ?> đ</span>
+                                    <span class="shopping-cart__product-price">
+                                    <?= number_format($sanPham['gia_khuyen_mai'] ? $sanPham['gia_khuyen_mai'] : $sanPham['gia_san_pham'], 0, ',', '.') ?> đ</span>
                                 </td>
                                 <td>
                                   <div class="button-container">
