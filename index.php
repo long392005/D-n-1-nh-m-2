@@ -45,4 +45,9 @@ match ($act) {
    'xu-ly-dat-hang'=>(new ListController)->postThanhToan(),
    'dat-hang-thanh-cong'=>(new ListController)->formDatHangThanhCong(),
 
+   'don-hang' =>(new ListController())->lichsumuahang(),
+   'huy-don-hang' => (new ListController())->huydonhang($_GET['id']),
+   'chi-tiet-don-hang' => (new ListController())->chitietmuahang(),
+ 'xac-nhan-don-hang' => (new ListController())->xacNhanDonHang(),
+
 };

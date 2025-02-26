@@ -564,75 +564,7 @@
 
 
     <!-- Shop by collection -->
-    <section class="collections-grid collections-grid_masonry" id="section-collections-grid_masonry">
-  <div class="container h-md-100">
-    <div class="row h-md-100">
-      <div class="col-lg-6 h-md-100">
-      <div class="collection-grid__item position-relative h-md-100">
-  <img src="./assets/images/collection_grid_1.jpg" 
-       alt="Women Collection" 
-       style="
-         width: 100%; 
-         height: 100%;
-          background-color: antiquewhite; 
-         object-fit: contain; 
-         object-position: top;">
-  <div class="content_abs content_bottom content_left content_bottom-md content_left-md">
-    <p class="text-uppercase mb-1">Hot List</p>
-    <h3 class="text-uppercase"><strong>Women</strong> Collection</h3>
-    <a href="?act=list-san-pham" class="btn-link default-underline text-uppercase fw-medium">Shop Now</a>
-  </div>
-</div>
-
-
-
-      </div>
-
-      <div class="col-lg-6 d-flex flex-column">
-        <div class="collection-grid__item position-relative flex-grow-1 mb-lg-4">
-          <div class="background-img" style="background-image: url('./assets/images/collection_grid_2.jpg');"></div>
-          <div class="content_abs content_bottom content_left content_bottom-md content_left-md">
-            <p class="text-uppercase mb-1">Hot List</p>
-            <h3 class="text-uppercase"><strong>Men</strong> Collection</h3>
-            <a href="?act=list-san-pham" class="btn-link default-underline text-uppercase fw-medium">Shop Now</a>
-          </div>
-        </div>
-        <div class="position-relative flex-grow-1 mt-lg-1">
-          <div class="row h-md-100">
-            <div class="col-md-6 h-md-100">
-              <div class="collection-grid__item h-md-100 position-relative">
-                <div class="background-img" style="background-image: url('./assets/images/collection_grid_3.jpg') ; width: 70%; 
-         height: 70%;
-          
-         object-fit: contain; 
-          "></div>
-                <div class="content_abs content_bottom content_left content_bottom-md content_left-md">
-                  <p class="text-uppercase mb-1">Hot List</p>
-                  <h3 class="text-uppercase"><strong>Kids</strong> Collection</h3>
-                  <a href="?act=list-san-pham" class="btn-link default-underline text-uppercase fw-medium">Shop Now</a>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 h-md-100">
-              <div class="collection-grid__item h-md-100 position-relative">
-                <div class="background-img" style="background-color: #f5e6e0"></div>
-                <div class="content_abs content_bottom content_left content_bottom-md content_left-md">
-                  <h3 class="text-uppercase"><strong>E-Gift</strong> Cards</h3>
-                  <p class="mb-1">Surprise someone with the gift they<br>really want.</p>
-                  <a href="?act=list-san-pham" class="btn-link default-underline text-uppercase fw-medium">Shop Now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   
-</section>
 
     <div class="mb-4 pb-4 mb-xl-5 pb-xl-5"></div>
 
@@ -716,57 +648,11 @@
 </div>
 
    
-      </div><!-- /.tab-content pt-2 -->
-     
-    </section><!-- /.products-grid -->
-
 
     <div class="mb-3 mb-xl-5 pb-1 pb-xl-5"></div>
 
 
-    <section class="deal-timer position-relative d-flex align-items-end overflow-hidden" style="background-color: #ebebeb;">
-      <div class="background-img" style="background-image: url('./assets/images/deal_timer_bg.jpg');"></div>
-
-      <div class="deal-timer-wrapper container position-relative">
-        <div class="deal-timer__content pb-2 mb-3 pb-xl-5 mb-xl-3 mb-xxl-5">
-          <p class="text_dash text-uppercase text-red fw-medium">Deal of the week</p>
-          <h3 class="h1 text-uppercase"><strong>Spring</strong> Collection</h3>
-          <a href="?act=list-san-pham" class="btn-link default-underline text-uppercase fw-medium mt-3">Shop Now</a>
-        </div>
-
-        
-      </div><!-- /.deal-timer-wrapper -->
-    </section><!-- /.deal-timer -->
-
-
-    <div class="mb-3 mb-xl-5 pb-1 pb-xl-5"></div>
-
-
-    <section class="grid-banner container mb-3">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="grid-banner__item grid-banner__item_rect position-relative mb-3">
-            <div class="background-img" style="background-image: url('./assets/images/banner_1.jpg');"></div>
-            <div class="content_abs content_bottom content_left content_bottom-lg content_left-lg">
-              <h6 class="text-uppercase text-white fw-medium mb-3">Starting At $19</h6>
-              <h3 class="text-white mb-3">Women's T-Shirts</h3>
-              <a href="?act=list-san-pham" class="btn-link default-underline text-uppercase text-white fw-medium">Shop Now</a>
-            </div><!-- /.content_abs content_bottom content_left content_bottom-md content_left-md -->
-          </div>
-        </div><!-- /.col-md-6 -->
-
-        <div class="col-md-6">
-          <div class="grid-banner__item grid-banner__item_rect position-relative mb-3">
-            <div class="background-img" style="background-image: url('./assets/images/banner_2.jpg');"></div>
-            <div class="content_abs content_bottom content_left content_bottom-lg content_left-lg">
-              <h6 class="text-uppercase fw-medium mb-3">Starting At $39</h6>
-              <h3 class="mb-3">Men's Sportswear</h3>
-              <a href="?act=list-san-pham" class="btn-link default-underline text-uppercase fw-medium">Shop Now</a>
-            </div><!-- /.content_abs content_bottom content_left content_bottom-md content_left-md -->
-          </div>
-        </div><!-- /.col-md-6 -->
-      </div><!-- /.row -->
-    </section><!-- /.grid-banner container -->
+   
 
 
     <div class="mb-5 pb-1 pb-xl-4"></div>
