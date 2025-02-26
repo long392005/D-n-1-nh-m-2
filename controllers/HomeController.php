@@ -102,43 +102,34 @@ class ListController {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_SESSION['user_admin'])) {
             $userId = $_SESSION['user_admin']['id'];
-            $san_pham_id = $_POST['san_pham_id'];
-            $so_luong = $_POST['so_luong'];
-
-            // Lấy thông tin sản phẩm
-            $sanPham = $this->modelSanPham->getProductById($san_pham_id);
-            if (!$sanPham) {
-                echo "<script>alert('Sản phẩm không tồn tại.');</script>";
-                echo "<script>window.location.href = '?act=chi-tiet-san-pham&id=$san_pham_id';</script>";
-                exit;
+            $mail = $this->modelNguoiDung->getTaiKhoanFromEmail($userId);
+            if(is_array($mail)){
+                $san_pham_id = $_POST['san_pham_id'];
+                $so_luong = $_POST['so_luong'];
+                // Lấy thông tin sản phẩm
+                $sanPham = $this->modelSanPham->getProductById($san_pham_id);
+                if ($sanPham['so_luong']<$so_luong) {
+                    echo "<script>alert('Sản phẩm không đủ.');
+                          window.location.href = '?act=chi-tiet-san-pham&id=$san_pham_id';</script>";
+                    die ;
+                }
             }
-            $tonKho = $sanPham['so_luong']; // Số lượng tồn kho
-
             // Lấy thông tin giỏ hàng của người dùng
             $gioHang = $this->modelGioHang->getGioHangFromUser($userId);
             if (!$gioHang) {
                 // Tạo giỏ hàng mới nếu chưa có
                 $gioHangId = $this->modelGioHang->addGioHang($userId);
                 $gioHang = ['id' => $gioHangId];
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
+            }else{
+                $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
             }
-            $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
-
             // Kiểm tra số lượng tổng cộng trong giỏ hàng
-            $tongSoLuongTrongGio = 0;
-            foreach ($chiTietGioHang as $detail) {
-                if ($detail['san_pham_id'] == $san_pham_id) {
-                    $tongSoLuongTrongGio += $detail['so_luong'];
-                }
-            }
-            $tongSoLuongMoi = $tongSoLuongTrongGio + $so_luong;
-
-            // Kiểm tra tồn kho
-            if ($tongSoLuongMoi > $tonKho) {
-                echo "<script>alert('Số lượng yêu cầu vượt quá tồn kho. Tồn kho hiện tại là: $tonKho.');</script>";
-                echo "<script>window.location.href = '?act=chi-tiet-san-pham&id=$san_pham_id';</script>";
-                exit;
-            }
-
+            if($sanPham['so_luong'] >= $so_luong){
+                $NewSoLuongSP =$sanPham['so_luong']-$so_luong;
+                $this->modelSanPham->updateSoLuongSP($sanPham['id'],$NewSoLuongSP);
+             //    var_dump($sanPham['so_luong']);die;
+             }
             // Thêm hoặc cập nhật sản phẩm trong giỏ hàng
             $checkSanPham = false;
             foreach ($chiTietGioHang as $detail) {
@@ -175,6 +166,11 @@ public function gioHang() {
         } else {
             $chiTietGioHang = $this->modelGioHang->getDetailGioHang($gioHang['id']);
         }
+        foreach ($chiTietGioHang as $detail) {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    $this->modelSanPham->restoreProductQuantity($detail['san_pham_id'], $detail['so_luong']);
+            }
+        }
         require_once './views/gioHang.php';
     } else {
         var_dump('Chưa đăng nhập'); die;
@@ -197,6 +193,11 @@ public function gioHang() {
                 unset($_SESSION['errors']);
                 header('Location: ?act=gio-hang');
             }
+            if($sanPham['so_luong'] >= $so_luong){
+                $NewSoLuongSP =$sanPham['so_luong']-$so_luong;
+                $this->modelSanPham->updateSoLuongSP($sanPham['id'],$NewSoLuongSP);
+             //    var_dump($sanPham['so_luong']);die;
+             }
         }
     }
     
@@ -204,7 +205,7 @@ public function gioHang() {
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id = $_POST['gio_hang_id'];
             $this->modelGioHang->deleteSanPham($id);
-            header('Location ?act=gio-hang');
+            header('Location: ?act=gio-hang');
             exit();
         }
     }

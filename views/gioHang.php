@@ -1,33 +1,5 @@
 <?php require_once 'layout/header.php';?>
-
-<!DOCTYPE html>
-<html dir="ltr" lang="zxx">
-
-<!-- Mirrored from uomo-html.flexkitux.com/Demo1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Nov 2024 17:25:01 GMT -->
-<head>
-
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="author" content="flexkit">
-
-  <link rel="shortcut icon" href="https://uomo-html.flexkitux.com/images/favicon.ico" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.gstatic.com/">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/plugins/swiper.min.css" type="text/css">
-  <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-  <!-- Document Title -->
-  <!-- Document Title -->
-  <title>Shop bán quần áo</title>
+<?php require_once 'layout/menu.php';?>
 
   <style>
 /* Ensure no strikethrough for links, paragraphs, or any other text elements */
@@ -37,16 +9,13 @@
 /* Style the button container */
 /* Position button outside and below the table */
 .button-container button{
-    position: absolute;
-    bottom: -60px;  /* Move the button down (adjust as needed) */
-    right: 0;       /* Align the button to the right */
-    text-align: right; /* Align the button to the right inside the container */
+    position: ;
+    bottom: 60px;  /* Move the button down (adjust as needed) */
 }
 
 /* Optional: Add a margin-top to add space between the table and the button */
 
 </style>
-</head>
   <svg class="d-none">
     <symbol id="icon_nav" viewBox="0 0 25 18">
       <rect width="25" height="2"/><rect y="8" width="20" height="2"/><rect y="16" width="25" height="2"/>
@@ -268,7 +237,8 @@
                                       <form action="?act=update-gio-hang" method="POST">
                                           <input type="hidden" name="id" value="<?= $sanPham['id'] ?>">
                                           <div class="qty-control position-relative">
-                                              <input type="number" name="so_luong" value="<?= $sanPham['so_luong'] ?>" min="1" class="qty-control__number text-center">
+                                          <input type="number" name="so_luong" value="<?= $sanPham['so_luong'] ?>" min="1" class="qty-control__number text-center" required>
+
                                               <div class="qty-control__reduce">-</div>
                                               <div class="qty-control__increase">+</div>
                                           </div>
@@ -350,31 +320,7 @@
 
   <div class="mb-5 pb-xl-5"></div>
   
-  <!-- Footer Type 1 -->
-  <?php require_once 'layout/footer.php'; ?>
-  <script src="assets/js/plugins/jquery.min.js"></script>
-  <script src="js/plugins/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/plugins/bootstrap-slider.min.js"></script>
-  
-  <script src="assetsjs/plugins/swiper.min.js"></script>
-  <script src="assets/js/plugins/countdown.js"></script>
-  <script src="assets/js/plugins/jquery.fancybox.js"></script>
-
-  <!-- Footer Scripts -->
-  <script src="assets/js/theme.js">
-    // Kiểm tra nếu có thông báo 'success' từ server
-    <?php if(isset($_GET['act']) && $_GET['act'] == 'them-gio-hang' && isset($_SESSION['cart_success']) && $_SESSION['cart_success'] == true): ?>
-        window.onload = function() {
-            // Hiển thị thông báo thành công
-            document.getElementById("success-message").style.display = "block";
-            // Tự động ẩn thông báo sau 3 giây
-            setTimeout(function() {
-                document.getElementById("success-message").style.display = "none";
-            }, 3000);
-        };
-    <?php endif; ?>
-</script>
-
+  <?php require_once 'layout/footer.php';?>
   <!-- Footer Scripts -->
 </body>
 </html>

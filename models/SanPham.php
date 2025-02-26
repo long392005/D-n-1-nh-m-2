@@ -190,5 +190,29 @@ public function addComment($idProduct, $idUser, $content) {
     $stmt = $this->conn->prepare($sql);
     $stmt->execute([$idProduct, $idUser, $content]);
 }
+public function restoreProductQuantity($productId, $quantity) {
+    try {
+        $sql = "UPDATE san_phams SET so_luong = so_luong + :quantity WHERE id = :productId";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':quantity' => $quantity, ':productId' => $productId]);
+    } catch (Exception $e) {
+        echo "Lỗi: " . $e->getMessage();
+    }
+}
+public function updateSoLuongSP($id ,$so_luong){
+    try {
+        $sql = "UPDATE san_phams
+                SET so_luong = :so_luong
+                WHERE  id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id',$id);
+        $stmt->bindParam(':so_luong',$so_luong);
+        // $stmt->execute([':so_luong' => $so_luong]);
+        $stmt->execute();
+        return true;
+    } catch (Exception $e) {
+        echo "Lỗi: " . $e->getMessage();
+    }
+}
 }
 
