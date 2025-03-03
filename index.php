@@ -9,7 +9,7 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 require_once './controllers/HomeController.php';
 require_once './controllers/LogoutController.php';
 require_once './controllers/UserController.php';
-
+require_once './controllers/BlogController.php';
 // Require toàn bộ file Models
 require_once './models/SanPham.php';
 require_once './models/SlideModel.php';
@@ -17,6 +17,7 @@ require_once './models/User.php';
 require_once './models/Giohang.php';
 require_once './models/DatHang.php';
 require_once './models/Donhang.php';
+require_once './models/BaiViet.php';
 
 $act = $_GET['act'] ?? '/';
 
@@ -50,5 +51,8 @@ match ($act) {
    'huy-don-hang' => (new ListController())->huydonhang($_GET['id']),
    'chi-tiet-don-hang' => (new ListController())->chitietmuahang(),
  'xac-nhan-don-hang' => (new ListController())->xacNhanDonHang(),
+
+  'list-bai-viet'                 => (new ListBlogController())->ListBlog(),
+  'chi-tiet-bai-viet'             => (new ListBlogController())->detailBlog(),
 
 };
