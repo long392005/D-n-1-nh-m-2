@@ -299,7 +299,7 @@
                                                         echo number_format($tongTien);
                                                         ?>
                                                     </tr>
-                                                    <?php $tongGioHang += $sanPham['gia_khuyen_mai'] * $sanPham['so_luong']; ?>
+                                                    
                                                 <?php endforeach; ?>
                                             </tbody>
                                             <tfoot>
