@@ -54,11 +54,7 @@
                                 <i class="ri-search-line search-icon"
                                     style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: #6c757d; font-size: 16px;"></i>
                             </div>
-                            <div class="flex-shrink-0">
-                                <a href="?act=form-them-san-pham" class="btn btn-soft-success material-shadow-none">
-                                    <i class="ri-add-circle-line align-middle me-1"></i> Thêm sản phẩm
-                                </a>
-                            </div>
+
                         </div><!-- end card header -->
 
                         <!-- Striped Rows -->
@@ -92,16 +88,12 @@
                                         <td><?= $nguoiDung['phone'] ?></td>
                                         <td><?= $nguoiDung['pass'] ?></td>
                                         <td><?= $nguoiDung['ngay_tao'] ?></td>
-                                        <td><img src="<?= BASE_URL . $nguoiDung['avartar'] ?>" style="width:80px;" alt=""></td>
+                                        <td><img src="<?= BASE_URL . $nguoiDung['avartar'] ?>" style="width:80px;" alt="ảnh"></td>
                                         <td>
                                             <span class="badge bg-success">Bình thường</span>
                                         </td>
                                         <td>
-                                            <div class="btn-group">
-                                                <a href="<?= BASE_URL_ADMIN ?>?act=chi-tiet-san-pham&id_san_pham=<?= $sanpham['id'] ?>">
-                                                    <button class="btn btn-primary"><i class="fa-solid fa-eye"></i></button>
-                                                </a>
-                                            </div>
+
                                             <div class="hstack gap-3 flex-wrap">
                                                 <a href="?act=form-sua-nguoi-dung&id=<?= $nguoiDung['id'] ?>" class="link-success fs-15">
                                                     <i class="ri-edit-2-line"></i>

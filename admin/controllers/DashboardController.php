@@ -1,13 +1,16 @@
 <?php
 
-class DashboardController {
+class DashboardController
+{
 
     public $modelDashboard;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->modelDashboard = new dashboard();
     }
-    public function index() {
+    public function index()
+    {
         $tongSanPham = $this->modelDashboard->countSanPham();
         $tongDonHang = $this->modelDashboard->countDonHang();
         $tongThuNhap = $this->modelDashboard->countThuNhap();

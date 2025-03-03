@@ -107,14 +107,24 @@
                                     </div>
 
 
-
                                     <div class="form-group">
-                                        <label for="">avartar User</label>
-                                        <input type="text" class="form-control" name="avartar" value="<?= $user['avartar'] ?>" placeholder="nhập tên User">
-                                        <?php if (isset($errors['avartar'])) { ?>
-                                            <p class="text-danger"><?= $errors['avartar'] ?></p>
-                                        <?php  } ?>
+                                        <label for="">Avatar User</label>
+
+                                        <!-- Input chọn ảnh mới -->
+                                        <input type="file" class="form-control" name="avartar">
+
+                                        <!-- Hiển thị ảnh cũ nếu có -->
+                                        <?php if (!empty($user['avartar'])): ?>
+                                            <br>
+                                            <img src="uploads/<?= htmlspecialchars($user['avartar']) ?>" alt="Avatar User" width="100" height="100" style="object-fit: cover; border-radius: 5px;">
+                                        <?php endif; ?>
+
+                                        <!-- Hiển thị lỗi nếu có -->
+                                        <?php if (isset($errors['avartar'])): ?>
+                                            <p class="text-danger"><?= htmlspecialchars($errors['avartar']) ?></p>
+                                        <?php endif; ?>
                                     </div>
+
 
 
                                     <div class="mb-3">

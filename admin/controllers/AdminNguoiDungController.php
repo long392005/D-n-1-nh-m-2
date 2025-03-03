@@ -34,9 +34,8 @@ class AdminNguoiDungController
     }
     public function postEditUser()
     {
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //lấy ra dữ liệu
+            // Lấy dữ liệu từ form
             $id = $_POST['id'];
             $ten = $_POST['ten'];
             $email = $_POST['email'];
@@ -44,11 +43,33 @@ class AdminNguoiDungController
             $phone = $_POST['phone'];
             $pass = $_POST['pass'];
             $ngay_tao = $_POST['ngay_tao'];
-            $avartar = $_POST['avartar'];
-
             $trang_thai = $_POST['trang_thai'];
 
+            // Lấy thông tin user hiện tại từ database
+            $oldUser = $this->modelNguoiDung->getOneUser($id);
+            $avartar = $oldUser['avartar']; // Giữ avatar cũ mặc định
 
+            // Xử lý upload ảnh mới nếu có
+            if (!empty($_FILES['avartar']['name'])) {
+                $targetDir = "uploads/"; // Thư mục lưu ảnh
+                $fileName = time() . "_" . basename($_FILES['avartar']['name']);
+                $targetFilePath = $targetDir . $fileName;
+                $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
+                $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+
+                if (in_array($fileType, $allowedTypes)) {
+                    if (move_uploaded_file($_FILES['avartar']['tmp_name'], $targetFilePath)) {
+                        // Nếu upload thành công, cập nhật avatar mới
+                        $avartar = $fileName;
+                    } else {
+                        $errors['avartar'] = 'Lỗi khi tải ảnh lên';
+                    }
+                } else {
+                    $errors['avartar'] = 'Chỉ chấp nhận file ảnh (JPG, JPEG, PNG, GIF)';
+                }
+            }
+
+            // Kiểm tra lỗi nhập liệu
             $errors = [];
             if (empty($email)) {
                 $errors['email'] = 'Email không được để trống';
@@ -60,9 +81,9 @@ class AdminNguoiDungController
                 $errors['pass'] = 'Password không được để trống';
             }
 
-
             if (empty($errors)) {
-                $this->modelNguoiDung->UpdateUser($id, $ten, $email, $dia_chi, $phone, $pass, $ngay_tao,  $avartar,  $trang_thai);
+                // Cập nhật thông tin người dùng
+                $this->modelNguoiDung->UpdateUser($id, $ten, $email, $dia_chi, $phone, $pass, $ngay_tao, $avartar, $trang_thai);
                 header('Location: ?act=nguoi-dung');
                 exit();
             } else {
@@ -70,6 +91,8 @@ class AdminNguoiDungController
             }
         }
     }
+
+
 
     public function resetStatus()
     {
