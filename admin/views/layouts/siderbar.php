@@ -118,6 +118,21 @@
                         </ul>
                     </div>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarBaiViet" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarBaiViet">
+                        <i class=" ri-user-line"></i> <span data-key="t-advance-ui">Quản lý Bài viết</span>
+                    </a>
+                    <div class="collapse" id="sidebarBaiViet">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="?act=bai-viet" class="nav-link">Danh sách Bài viết</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

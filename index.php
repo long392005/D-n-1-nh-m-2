@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
@@ -23,19 +23,20 @@ match ($act) {
     'logout-client' => (new LogoutController())->logout(),
 
     '/' => (new ListController())->home(),
-    'list-san-pham'                 => (new ListController())->listProduct(),
-    'chi-tiet-san-pham'=> (new ListController())->detailProduct(),
-    'them-binh-luan'=> (new ListController())->addComment(),
+    'list-san-pham' => (new ListController())->listProduct(),
+    'chi-tiet-san-pham' => (new ListController())->detailProduct(),
+    'them-binh-luan' => (new ListController())->addComment(),
 
-    'detail-tai-khoan' =>(new UserController())->formDetail(),
-    'update-tai-khoan' =>(new UserController)->updateAcc(),
-    'form-password' =>(new UserController)->formPassword(),
-    'update-password' =>(new UserController)->updatePassword(),
-    
+    'detail-tai-khoan' => (new UserController())->formDetail(),
+    'update-tai-khoan' => (new UserController)->updateAcc(),
+    'form-password' => (new UserController)->formPassword(),
+    'update-password' => (new UserController)->updatePassword(),
+
     //giỏ hàng
-    'gio-hang'=> (new ListController())->gioHang(),
+    'gio-hang' => (new ListController())->gioHang(),
     'them-gio-hang'                 => (new ListController())->addGioHang(),
-   'update-gio-hang'=> (new ListController())->updateGioHang(),
-   'xoa-gio-hang'=> (new ListController())->delete(),
+    'update-gio-hang' => (new ListController())->updateGioHang(),
+    'xoa-gio-hang' => (new ListController())->delete(),
 
+    // bài viết 
 };

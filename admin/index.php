@@ -18,6 +18,7 @@ require_once  './controllers/AdminSanphamController.php';
 require_once 'controllers/DashboardController.php';
 require_once './controllers/DashboardController.php';
 require_once './controllers/AdminNguoiDungController.php';
+require_once './controllers/AdminBaiVietController.php';
 // Require toàn bộ file Models
 
 require_once './models/DonHang.php';
@@ -77,5 +78,12 @@ match ($act) {
     'sua-san-pham' => (new AdminSanPhamController())->postEditSanpham(),
     'xoa-san-pham' => (new AdminSanPhamController())->deleteSanpham(),
     'chi-tiet-san-pham' => (new AdminSanPhamController)->detailSanpham(),
-};
 
+    //Bài viết
+    'bai-viet' => (new AdminBaiVietController())->danhSachBaiViet(),
+    'form-them-bai-viet' => (new AdminBaiVietController())->formaddBaiViet(),
+    'them-bai-viet' => (new AdminBaiVietController())->addBaiViet(),
+    'form-sua-bai-viet' => (new AdminBaiVietController())->formEditBaiViet(),
+    'sua-bai-viet' => (new AdminBaiVietController())->postEditBaiViet(),
+    'xoa-bai-viet' => (new AdminBaiVietController())->deleteBaiViet(),
+};
