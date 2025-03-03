@@ -1,20 +1,377 @@
-<?php require_once 'layout/header.php';?>
-<?php require_once 'layout/menu.php';?>
 
-  <style>
-/* Ensure no strikethrough for links, paragraphs, or any other text elements */
-* {
-    text-decoration: none !important;
+<!DOCTYPE html>
+<html dir="ltr" lang="zxx">
+
+<!-- Mirrored from uomo-html.flexkitux.com/Demo1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Nov 2024 17:25:01 GMT -->
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="author" content="flexkit">
+
+  <link rel="shortcut icon" href="https://uomo-html.flexkitux.com/images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/plugins/swiper.min.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <style>
+   
+  /* Tổng quan cho danh sách bình luận */
+  .comment-list {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Từng bình luận */
+  .comment-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .comment-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Tên khách hàng và ngày đăng */
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .comment-header .comment-author {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .comment-header .comment-date {
+    font-size: 14px;
+    color: #777;
+  }
+
+  /* Nội dung bình luận */
+  .comment-content {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  /* Xếp hạng (sao) */
+  .comment-rating {
+    color: #ffc107;
+    font-size: 14px;
+  }
+
+  /* Phần tử cuối */
+  .no-comments {
+    text-align: center;
+    color: #777;
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  /* Tổng quan */
+  .js-scroll-nav {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+
+  /* Danh sách bình luận */
+  .woocommerce-tabs .border-bottom {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .woocommerce-tabs .d-flex {
+    align-items: center;
+  }
+
+  .woocommerce-tabs h6 {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .woocommerce-tabs .text-yellow-darker small {
+    color: #ffc107;
+    margin-right: 2px;
+  }
+
+  .woocommerce-tabs .text-gray-600 {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 8px;
+  }
+
+  .woocommerce-tabs p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .woocommerce-tabs .nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+
+  .woocommerce-tabs .nav li {
+    margin-right: 20px;
+  }
+
+  .woocommerce-tabs .nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #777;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+  }
+
+  .woocommerce-tabs .nav a:hover {
+    color: #000;
+  }
+
+  .woocommerce-tabs .flaticon-like-1,
+  .woocommerce-tabs .flaticon-dislike,
+  .woocommerce-tabs .flaticon-flag {
+    font-size: 18px;
+  }
+
+  /* Form bình luận */
+  form {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: none;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+  }
+
+  form textarea:focus {
+    border-color: #ffc107;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+  }
+
+  form .btn {
+    background-color: #ffc107;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  form .btn:hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+  }
+
+  form .btn:active {
+    background-color: #c69500;
+    transform: translateY(0);
+  }
+  /* Giá sản phẩm với gạch chéo */
+.product-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #e74c3c; /* Màu đỏ cho giá sản phẩm */
+    text-decoration: line-through; /* Gạch chéo giá */
 }
-/* Style the button container */
-/* Position button outside and below the table */
-.button-container button{
-    bottom: 60px;  /* Move the button down (adjust as needed) */
+.product-sale-price{
+  font-size: 22px;
 }
 
-/* Optional: Add a margin-top to add space between the table and the button */
+/* Mô tả sản phẩm, lượt xem và trạng thái */
+.product-single__short-desc, .product-single__price {
+    margin-top: 15px;
+}
 
+.product-single__short-desc p, .product-single__price p {
+    font-weight: normal;
+    color: #555;
+}
+
+.product-single__short-desc h5, .product-single__price h5 {
+    font-weight: bold;
+    color: #333;
+}
+.product-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.original-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.sale-price {
+    color: #e74c3c;
+    font-size: 22px;
+}
+
+.product-single__short-desc {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 16px;
+    color: #555;
+}
+
+.product-single__quantity, 
+.product-single__views, 
+.product-single__status {
+    margin-bottom: 15px;
+}
+
+.product-single__quantity h5,
+.product-single__views h5,
+.product-single__status h5 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.product-single__quantity p,
+.product-single__views p,
+.product-single__status p {
+    color: #888;
+}
+
+.product-single__status h5 {
+    color: <?= $product['trang_thai'] == 1 ? '#2ecc71' : '#e74c3c' ?>;
+}
+/* Style the table */
+.order-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.order-history-table th, .order-history-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.order-history-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.order-history-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.order-history-table tr:hover {
+    background-color: #ddd;
+}
+
+/* Style for action buttons */
+button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-view {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+.thead-dark{
+  background-color: #b1d6e8;
+}
 </style>
+  <!-- Document Title -->
+  <title>Chi tiết sản sản phẩm</title>
+
+</head>
+
+<body>
   <svg class="d-none">
     <symbol id="icon_nav" viewBox="0 0 25 18">
       <rect width="25" height="2"/><rect y="8" width="20" height="2"/><rect y="16" width="25" height="2"/>
@@ -166,161 +523,291 @@
   </svg>
   <!-- Mobile Header -->
 
-  <?php require_once 'layout/menu.php';?>
   <!-- Header Type 1 -->
+  <header id="header" class="header header_sticky">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container">
+      <div class="header-desk header-desk_type_1">
+        <div class="logo">
+          <a href="<?= BASE_URL ?>">
+            <img src="./assets/images/logo.png" alt="Uomo" class="logo__image d-block">
+          </a>
+        </div><!-- /.logo -->
+
+        <nav class="navigation">
+          <ul class="navigation__list list-unstyled d-flex">
+            <li class="navigation__item">
+              <a href="<?= BASE_URL ?>" class="navigation__link">Trang chủ</a>
+              
+            </li>
+            <li class="navigation__item">
+              <a href="?act=list-san-pham" class="navigation__link">Sản phẩm</a>
+             
+            </li>
+            <li class="navigation__item">
+              <a href="?act=list-bai-viet" class="navigation__link">Tin tức</a>
+              
+            </li>
+            <li class="navigation__item">
+              <a href="<?= BASE_URL ?>" class="navigation__link">Giới thiệu</a>
+              
+            </li>
+            <li class="navigation__item">
+              <a href="<?= BASE_URL . '?act=form-lien-he' ?>" class="navigation__link">Liên hệ</a>
+              
+            </li>
+          </ul><!-- /.navigation__list -->
+        </nav><!-- /.navigation -->
+
+        <div class="header-tools d-flex align-items-center">
+          <div class="header-tools__item hover-container">
+            <div class="js-hover__open position-relative">
+                <button class="header-search-trigger d-xl-none d-lg-block"><i class="pe-7s-search"></i></button>
+              <form class="js-search-popup search-field__actor" href="#">
+                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_search" /></svg>
+                <i class="btn-icon btn-close-lg"></i>
+</form>
+            </div>
+
+
+            <div class="dropdown ms-sm-3 header-item topbar-user">
+  <!-- Nút User -->
+  <div class="dropdown ms-sm-3 header-item topbar-user">
+  <!-- Nút User -->
+    <button 
+    type="button" 
+    class="btn material-shadow-none" 
+    id="page-header-user-dropdown" 
+    data-bs-toggle="dropdown" 
+    aria-haspopup="true" 
+    aria-expanded="false"
+  >
+  
+    <span class="d-flex align-items-center">
+      <!-- Ảnh đại diện -->
+      <img 
+        class="rounded-circle header-profile-user" 
+        style="width: 37px; height: 35px;" 
+        src="<?= isset($_SESSION['user_admin']) ? BASE_URL . $_SESSION['user_admin']['avartar'] : BASE_URL . './uploads/iconn.jpg'; ?>" 
+        alt="Header Avatar"
+      >
+      <!-- Tên user -->
+      <span class="text-start ms-xl-2">
+        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+          <?= isset($_SESSION['user_admin']) ? $_SESSION['user_admin']['ten'] : 'Guest'; ?>
+        </span>
+        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">
+          <?= isset($_SESSION['user_admin']) ? 'Người dùng' : ''; ?>
+        </span>
+      </span>
+    </span>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div class="dropdown-menu dropdown-menu-end">
+    <?php if (isset($_SESSION['user_admin'])): ?>
+      <!-- Đã đăng nhập -->
+      <h6 class="dropdown-header">
+       Chào <?= $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!
+      </h6>
+      <!-- Profile -->
+      <a class="dropdown-item" href="pages-profile.html">
+        <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Tài khoản</span>
+      </a>
+      <!-- Logout -->
+      <a class="dropdown-item" href="?act=logout-admin">
+        <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle" data-key="t-logout">Đăng xuất</span>
+      </a>
+    <?php else: ?>
+      <!-- Chưa đăng nhập -->
+      <h6 class="dropdown-header">
+        Chào mừng, Guest!
+      </h6>
+      <!-- Login -->
+      <a class="dropdown-item" href="<?= BASE_URL_ADMIN . '?act=login-admin' ?>">
+        <i class="mdi mdi-login text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Đăng nhập</span>
+      </a>
+    <?php endif; ?>
+  </div>
+</div>
+
+
+  <!-- Dropdown Menu -->
+  <div class="dropdown-menu dropdown-menu-end">
+    <!-- Header -->
+    <h6 class="dropdown-header">
+      Welcome <?php echo $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!
+    </h6>
+    <!-- Profile -->
+    <a class="dropdown-item" href="pages-profile.html">
+      <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+      <span class="align-middle">Tài khoản</span>
+    </a>
+    <!-- Logout -->
+    <a class="dropdown-item" href="?act=logout-admin&base=user">
+      <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+      <span class="align-middle" data-key="t-logout">Đăng nhập</span>
+    </a>
+  </div>
+</div>
+
+          <a class="header-tools__item" href="account_wishlist.html">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_heart" /></svg>
+          </a>
+
+          <a href="#" class="header-tools__item header-tools__cart js-open-aside" data-aside="cartDrawer">
+            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_cart" /></svg>
+            <span class="cart-amount d-block position-absolute js-cart-items-count">3</span>
+          </a>
+
+          <a class="header-tools__item" href="#" data-bs-toggle="modal" data-bs-target="#siteMap">
+            <svg class="nav-icon" width="25" height="18" viewBox="0 0 25 18" xmlns="http://www.w3.org/2000/svg"><use href="#icon_nav" /></svg>
+          </a>
+        </div><!-- /.header__tools -->
+      </div><!-- /.header-desk header-desk_type_1 -->
+    </div><!-- /.container -->
+  </header>
+  <!-- End Header Type 1 -->
+  <!-- End Header Type 1 -->
 
   <main>
-    <section class="shop-checkout container">
-      <h2 class="page-title">Giỏ hàng</h2>
-        <div class="checkout-steps">
-            <a href="" class="checkout-steps__item active">
-                <span class="checkout-steps__item-number">01</span>
-                <span class="checkout-steps__item-title">
-                    <span>Giỏ hàng của tôi</span>
-                    <em>Giỏ hàng</em>
-                </span>
-            </a>
-            <a href="<?= BASE_URL . '?act=form-dat-hang' ?>" class="checkout-steps__item">
-                <span class="checkout-steps__item-number">02</span>
-                <span class="checkout-steps__item-title">
-                    <span>Thanh toán</span>
-                    <em>Thanh toán</em>
-                </span>
-            </a>
-            <a href="<?= BASE_URL . '?act=dat-hang-thanh-cong' ?>" class="checkout-steps__item">
-                <span class="checkout-steps__item-number">03</span>
-                <span class="checkout-steps__item-title">
-                    <span>Confirmation</span>
-                    <em>Review And Submit Your Order</em>
-                </span>
-            </a>
-        </div>
-      <!-- Form START -->
+  <div id="layout-wrapper">
+        <!-- HEADER -->
        
-      <div class="shopping-cart">
-              <div class="cart-table__wrapper">
-                  <table class="cart-table">
-                      <thead>
-                          <tr>
-                              <th>Sản phẩm</th>
-                              <th></th>
-                              <th>Giá</th>
-                              <th>Số lượng</th>
-                              <th>Tổng cộng</th>
-                              <th></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        $tongGioHang = 0;
-                        foreach ($chiTietGioHang as $key => $sanPham):
-                        ?>
-                            <tr>
-                                <td>
-                                    <div class="shopping-cart__product-item">
-                                        <a href="./product1_simple.html">
-                                            <img loading="lazy" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="120" height="120" alt="">
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="shopping-cart__product-item__detail">
-                                        <h4><a href="./product1_simple.html"><?= $sanPham['ten_san_pham']; ?></a></h4>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="shopping-cart__product-price">
-                                    <?= number_format($sanPham['gia_khuyen_mai'] ? $sanPham['gia_khuyen_mai'] : $sanPham['gia_san_pham'], 0, ',', '.') ?> đ</span>
-                                </td>
-                                <td>
-                                  <div class="button-container">
-                                      <form action="?act=update-gio-hang" method="POST">
-                                          <input type="hidden" name="id" value="<?= $sanPham['id'] ?>">
-                                          <div class="qty-control position-relative">
-                                          <input type="number" name="so_luong" value="<?= $sanPham['so_luong'] ?>" min="1" class="qty-control__number text-center" required>
+        <div class="vertical-overlay"></div>
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
+                                <h4 class="mb-sm-0">Quản lý đơn hàng</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Trang chủ</a></li>
+                                        <li class="breadcrumb-item active">Đơn hàng</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                                              <div class="qty-control__reduce">-</div>
-                                              <div class="qty-control__increase">+</div>
-                                          </div>
-                                          <button type="submit" class="btn btn-light">Cập nhật</button>
-                                      </form>
-                                  </div>
-                              </td>
-                                <td>
-                                    <?php
-                                      $tongTien=0;
-                                      if ($sanPham['gia_san_pham']){
-                                        $tongTien = $sanPham['gia_san_pham'] * $sanPham['so_luong'];
-                                      }else{
-                                        $tongTien = $sanPham['gia_khuyen_mai'] * $sanPham['so_luong'];
-                                      }
-                                      $tongGioHang += $tongTien;
-                                      echo number_format($tongTien);
-                                    ?>
-                                </td>
-                                <td>
-                                    <form action="?act=xoa-gio-hang" method="POST" onsubmit="return confirm('Bạn có đồng ý xóa không?')">
-                                        <input type="hidden" name="gio_hang_id" value="<?= $sanPham['id'] ?>">
-                                        <button type="submit" class="link-danger fs-15" style="border: none; background: none; padding: 0;">
-                                            <i class="ri-delete-bin-line" style="font-size: 20px;">xoa</i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <!-- Nút thêm khuyến mãi -->
+                            
 
-                  </table>
-              </div>
-              <div class="shopping-cart__totals-wrapper">
-                  <div class="sticky-content">
-                      <div class="shopping-cart__totals">
-                          <h3>Tổng số giỏ hàng</h3>
-                          <table class="cart-totals">
-                              <tbody>
-                              <tr>
-                            <th>Tổng cộng</th>
-                            <td><?= number_format($tongGioHang, 0, ',', '.') ?> đ</td>
-                        </tr>
-                        <tr>
-                            <th>Thuế (15%)</th>
-                            <td><?= number_format($tongGioHang * 0.15, 0, ',', '.') ?> đ</td>
-                        </tr>
-                        <tr>
-                            <th>Phí vận chuyển</th>
-                            <td><?= number_format(30000, 0, ',', '.') ?> đ</td> <!-- Tách phí vận chuyển ra đây -->
-                        </tr>
-                        <tr>
-                            <th>Tổng cộng (Thanh toán)</th>
-                            <td><?= number_format($tongGioHang + 30000 + ($tongGioHang * 0.15), 0, ',', '.') ?> đ</td>
-                        </tr>
+                            <!-- Thanh tìm kiếm -->
+                            <div class="col-sm">
+                                                <div class="d-flex justify-content-sm-end">
+                                                    <div class="search-box ms-2">
+                                                    <input type="text" id="orderSearch" class="form-control search" placeholder="Search...">
+                                                        <i class="ri-search-line search-icon"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                              </tbody>
-                          </table>
-                      </div>
-                      <?php if (!empty($chiTietGioHang)): ?>
-                      <form action="<?= BASE_URL . '?act=form-dat-hang' ?>" method="post">
-                          <div class="button-wrapper container">
-                              <button type="submit" class="btn btn-primary btn-checkout">Đặt Hàng</button>
-                          </div>
-                      </form>
-                  <?php else: ?>
-                      <div class="button-wrapper container">
-                          <p class="text-danger">Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm trước khi đặt hàng.</p>
-                      </div>
-                  <?php endif; ?>
-                  </div>
-              </div>
-          </div>
+                        </div>
+
+                     <!-- Bảng Đơn Hàng -->
+                     <h1 class="text-center my-4">Lịch sử mua hàng</h1>
+
+<?php if (!empty($donHangs)): ?>
+    <div class="table-responsive">
+        <table class="order-history-table table table-striped table-bordered shadow-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày đặt</th>
+                    <th>Tổng tiền</th>
+                    <th>Phương thức thanh toán</th>
+                    <th>Trạng thái đơn hàng</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($donHangs as $donHang): ?>
+                    <tr>
+                        <td><?= $donHang['ma_don_hang'] ?></td>
+                        <td>
+                <?= $donHang['ngay_dat']?>
+            </td>
+                        <td>
+                            <?php
+                                // Kiểm tra nếu 'tong_tien' có giá trị hợp lệ trước khi hiển thị
+                                $tongTien = isset($donHang['tong_tien']) ? $donHang['tong_tien'] : 0;
+                                echo number_format($tongTien + 30000 + ($tongTien * 0.15), 0, ',', '.') . " đ";
+                            ?>
+                        </td>
+                        <td><?= $phuongThucThanhToan[$donHang['phuong_thuc_thanh_toan_id']] ?></td>
+                        <td><?= $trangThaiDonHang[$donHang['trang_thai_id']] ?></td>
+                        <td>
+                            <a href="?act=chi-tiet-don-hang&id=<?= $donHang['id'] ?>" class="btn btn-primary">Chi tiết</a>
+                            <?php if ($donHang['trang_thai_id'] === 1): ?>
+                                <a href="?act=huy-don-hang&id=<?= $donHang['id'] ?>" class="btn btn-danger" onclick="return confirm('Xác nhận hủy đơn hàng?')">Hủy</a>
+                                <?php elseif ($donHang['trang_thai_id'] === 4): // Đơn hàng đã giao hàng thành công ?>
+                                <!-- Nút xác nhận khi đơn hàng giao thành công -->
+                                <a href="?act=xac-nhan-don-hang&orderId=<?php echo $donHang['id']; ?>" class="btn btn-success" onclick="return confirm('Xác nhận đơn hàng đã hoàn tất?')">Xác nhận đơn hàng</a>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <!-- Hiển thị tổng thành tiền -->
+        <div class="text-center my-3">
+            <h5>Tổng thành tiền của tất cả đơn hàng: 
+                <?= number_format(array_sum(array_column($donHangs, 'tong_tien')), 0, ',', '.') ?> đ
+            </h5>
+        </div>
+    </div>
+<?php else: ?>
+    <p class="text-center">Không có đơn hàng nào trong lịch sử của bạn.</p>
+<?php endif; ?>
 
 
-      <!-- Form END -->
-    </section>
+
+                    </div>
+                </div>
+            </div>
+
   </main>
 
   <div class="mb-5 pb-xl-5"></div>
   
-  <?php require_once 'layout/footer.php';?>
+  <!-- Footer Type 1 -->
+  <?php require_once 'layout/footer.php'; ?>
+  <script src="assets/js/plugins/jquery.min.js"></script>
+  <script src="js/plugins/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/plugins/bootstrap-slider.min.js"></script>
+  
+  <script src="assetsjs/plugins/swiper.min.js"></script>
+  <script src="assets/js/plugins/countdown.js"></script>
+  <script src="assets/js/plugins/jquery.fancybox.js"></script>
+
   <!-- Footer Scripts -->
+  <script src="assets/js/theme.js">
+    // Kiểm tra nếu có thông báo 'success' từ server
+    <?php if(isset($_GET['act']) && $_GET['act'] == 'them-gio-hang' && isset($_SESSION['cart_success']) && $_SESSION['cart_success'] == true): ?>
+        window.onload = function() {
+            // Hiển thị thông báo thành công
+            document.getElementById("success-message").style.display = "block";
+            // Tự động ẩn thông báo sau 3 giây
+            setTimeout(function() {
+                document.getElementById("success-message").style.display = "none";
+            }, 3000);
+        };
+    <?php endif; ?>
+</script>
 </body>
+
+<!-- Mirrored from uomo-html.flexkitux.com/Demo1/product1_simple.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Nov 2024 17:58:07 GMT -->
 </html>

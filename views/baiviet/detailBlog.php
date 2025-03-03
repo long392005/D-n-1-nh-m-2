@@ -1,20 +1,136 @@
-<?php require_once 'layout/header.php';?>
-<?php require_once 'layout/menu.php';?>
+<!DOCTYPE html>
+<html dir="ltr" lang="zxx">
+<head>
 
-  <style>
-/* Ensure no strikethrough for links, paragraphs, or any other text elements */
-* {
-    text-decoration: none !important;
-}
-/* Style the button container */
-/* Position button outside and below the table */
-.button-container button{
-    bottom: 60px;  /* Move the button down (adjust as needed) */
-}
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="author" content="flexkit">
 
-/* Optional: Add a margin-top to add space between the table and the button */
+  <link rel="shortcut icon" href="https://uomo-html.flexkitux.com/images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.gstatic.com/">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/plugins/swiper.min.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+
+  <!-- Document Title -->
+  <title>Blog Single | Uomo eCommerce HTML5 Template</title>
+<style>
+  /* Container chung */
+  .mw-930 {
+      width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+  }
+
+  /* Tiêu đề bài viết */
+  .page-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 15px;
+      line-height: 1.4;
+      text-align: center;
+  }
+
+  /* Thông tin metadata (ngày đăng) */
+  .blog-single__item-meta {
+      text-align: center;
+      font-size: 1rem;
+      color: #999;
+      margin-bottom: 25px;
+  }
+
+  .blog-single__item-meta__date {
+      background-color: #f3f3f3;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+  }
+
+  /* Nội dung bài viết */
+  .blog-single__item-content {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Nội dung bài viết (đoạn văn bản) */
+  .ckeditor-content {
+      line-height: 1.8;
+      font-size: 1.1rem;
+      color: #444;
+      text-align: justify;
+  }
+
+  /* Đoạn văn trong nội dung */
+  .ckeditor-content p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+  }
+
+  /* Các liên kết trong nội dung */
+  .ckeditor-content a {
+      color: #007bff;
+      text-decoration: none;
+  }
+
+  .ckeditor-content a:hover {
+      text-decoration: underline;
+  }
+
+  /* Nếu có hình ảnh trong bài viết */
+  .ckeditor-content img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+      border-radius: 8px;
+  }
+
+  /* Các phần tử phản hồi với người đọc */
+  .blog-single__item-content blockquote {
+      border-left: 4px solid #007bff;
+      padding-left: 20px;
+      font-style: italic;
+      color: #555;
+      margin: 20px 0;
+  }
+
+  /* Đoạn code (nếu có) */
+  .ckeditor-content pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      overflow-x: auto;
+      margin-bottom: 20px;
+  }
+
+  /* Chú ý nhỏ (nếu có) */
+  .ckeditor-content small {
+      color: #777;
+      font-size: 0.8rem;
+  }
+
+  /* Tạo không gian giữa các phần tử */
+  .mw-930 h2, .blog-single__item-meta, .blog-single__item-content {
+      margin-bottom: 20px;
+  }
 </style>
+</head>
+
+<body>
   <svg class="d-none">
     <symbol id="icon_nav" viewBox="0 0 25 18">
       <rect width="25" height="2"/><rect y="8" width="20" height="2"/><rect y="16" width="25" height="2"/>
@@ -165,162 +281,200 @@
     </symbol>
   </svg>
   <!-- Mobile Header -->
+  <<?php
+$nguoiDung = $_SESSION['user_admin'] ?? null; // Kiểm tra nếu có thông tin người dùng
+?>
 
-  <?php require_once 'layout/menu.php';?>
-  <!-- Header Type 1 -->
+<header id="header" class="header header_sticky">
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container">
+      <div class="header-desk header-desk_type_1">
+        <div class="logo">
+          <a href="<?= BASE_URL ?>">
+            <img src="./assets/images/logo.png" alt="Uomo" class="logo__image d-block">
+          </a>
+        </div><!-- /.logo -->
+
+        <nav class="navigation">
+          <ul class="navigation__list list-unstyled d-flex">
+            <li class="navigation__item">
+              <a href="<?= BASE_URL ?>" class="navigation__link">Trang chủ</a>
+              
+            </li>
+            <li class="navigation__item">
+              <a href="?act=list-san-pham" class="navigation__link">Sản phẩm</a>
+             
+            </li>
+            <li class="navigation__item">
+              <a href="?act=list-bai-viet" class="navigation__link">Tin tức</a>
+              
+            </li>
+            <li class="navigation__item">
+              <a href="?act=list-khuyen-mai" class="navigation__link">Khuyến mãi</a>
+              
+            </li>
+            <li class="navigation__item">
+              <a href="<?= BASE_URL . '?act=form-lien-he' ?>" class="navigation__link">Liên hệ</a>
+              
+            </li>
+        
+          </ul><!-- /.navigation__list -->
+        </nav><!-- /.navigation -->
+
+        <div class="header-tools d-flex align-items-center">
+          <div class="header-tools__item hover-container">
+            <div class="js-hover__open position-relative">
+                <button class="header-search-trigger d-xl-none d-lg-block"><i class="pe-7s-search"></i></button>
+              <form class="js-search-popup search-field__actor" href="#">
+                <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_search" /></svg>
+                <i class="btn-icon btn-close-lg"></i>
+</form>
+            </div>
+
+
+            <div class="dropdown ms-sm-3 header-item topbar-user">
+  <!-- Nút User -->
+  <div class="dropdown ms-sm-3 header-item topbar-user">
+  <!-- Nút User -->
+    <button 
+    type="button" 
+    class="btn material-shadow-none" 
+    id="page-header-user-dropdown" 
+    data-bs-toggle="dropdown" 
+    aria-haspopup="true" 
+    aria-expanded="false"
+  >
+  
+    <span class="d-flex align-items-center">
+      <!-- Ảnh đại diện -->
+      <img 
+        class="rounded-circle header-profile-user" 
+        style="width: 37px; height: 35px;" 
+        src="<?= isset($_SESSION['user_admin']) ? BASE_URL . $_SESSION['user_admin']['avartar'] : BASE_URL . './uploads/iconn.jpg'; ?>" 
+        alt="Header Avatar"
+      >
+      <!-- Tên user -->
+      <span class="text-start ms-xl-2">
+        <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+          <?= isset($_SESSION['user_admin']) ? $_SESSION['user_admin']['ten'] : 'Guest'; ?>
+        </span>
+        <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">
+          <?= isset($_SESSION['user_admin']) ? 'Người dùng' : ''; ?>
+        </span>
+      </span>
+    </span>
+  </button>
+
+  <!-- Dropdown Menu -->
+  <div class="dropdown-menu dropdown-menu-end">
+    <?php if (isset($_SESSION['user_admin'])): ?>
+      <!-- Đã đăng nhập -->
+      <h6 class="dropdown-header">
+        Chào <?= $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!
+      </h6>
+      <!-- Profile -->
+      <a class="dropdown-item" href="?act=detail-tai-khoan&id_nguoi_dung=<?= $nguoiDung['id'] ?? ''; ?>">
+        <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Tài khoản</span>
+      </a>
+      <a class="dropdown-item" href="?act=don-hang&id_nguoi_dung=<?= $nguoiDung['id'] ?? ''; ?>">
+        <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Đơn hàng</span>
+      </a>
+      <!-- Logout -->
+      <a class="dropdown-item" href="?act=logout-admin">
+        <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle" data-key="t-logout">Đăng xuất</span>
+      </a>
+    <?php else: ?>
+      <!-- Chưa đăng nhập -->
+      <h6 class="dropdown-header">
+        Chào mừng, Guest!
+      </h6>
+      <!-- Login -->
+      <a class="dropdown-item" href="<?= BASE_URL_ADMIN . '?act=login-admin' ?>">
+        <i class="mdi mdi-login text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Đăng nhập</span>
+      </a>
+    <?php endif; ?>
+  </div>
+</div>
+
+
+  <!-- Dropdown Menu -->
+  <div class="dropdown-menu dropdown-menu-end">
+    <!-- Header -->
+    <h6 class="dropdown-header">
+      Welcome <?php echo $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!
+    </h6>
+    <!-- Profile -->
+    <a class="dropdown-item" href="pages-profile.html">
+      <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+      <span class="align-middle">Tài khoản</span>
+    </a>
+    <!-- Logout -->
+    <a class="dropdown-item" href="?act=logout-admin&base=user">
+      <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+      <span class="align-middle" data-key="t-logout">Đăng nhập</span>
+    </a>
+  </div>
+</div>
+
+<a class="header-tools__item" href="account_wishlist.html">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_heart" /></svg>
+          </a>
+
+          <a href="?act=gio-hang" class="header-tools__item js-open-aside" data-aside="cartDrawer">
+            <svg class="d-block" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_cart" /></svg>
+            <span class="cart-amount d-block position-absolute js-cart-items-count"></span>
+          </a>
+
+         
+        </div><!-- /.header__tools -->
+      </div><!-- /.header-desk header-desk_type_1 -->
+    </div><!-- /.container -->
+  </header>
+  <!-- End Header Type 1 -->
   <main>
-    <section class="shop-checkout container">
-      <h2 class="page-title">Giỏ hàng</h2>
-        <div class="checkout-steps">
-            <a href="" class="checkout-steps__item active">
-                <span class="checkout-steps__item-number">01</span>
-                <span class="checkout-steps__item-title">
-                    <span>Giỏ hàng của tôi</span>
-                    <em>Giỏ hàng</em>
-                </span>
-            </a>
-            <a href="<?= BASE_URL . '?act=form-dat-hang' ?>" class="checkout-steps__item">
-                <span class="checkout-steps__item-number">02</span>
-                <span class="checkout-steps__item-title">
-                    <span>Thanh toán</span>
-                    <em>Thanh toán</em>
-                </span>
-            </a>
-            <a href="<?= BASE_URL . '?act=dat-hang-thanh-cong' ?>" class="checkout-steps__item">
-                <span class="checkout-steps__item-number">03</span>
-                <span class="checkout-steps__item-title">
-                    <span>Confirmation</span>
-                    <em>Review And Submit Your Order</em>
-                </span>
-            </a>
+    <div class="mb-2 pb-2"></div>
+    <section class="blog-page blog-single container">
+        <div class="mw-930">
+            <h2 class="page-title"><?= $detailBaiViet['title'] ?></h2>
+            <div class="blog-single__item-meta">
+                <span class="blog-single__item-meta__date"><?= $detailBaiViet['ngay_tao_bai_viet'] ?></span>
+            </div>
         </div>
-      <!-- Form START -->
-       
-      <div class="shopping-cart">
-              <div class="cart-table__wrapper">
-                  <table class="cart-table">
-                      <thead>
-                          <tr>
-                              <th>Sản phẩm</th>
-                              <th></th>
-                              <th>Giá</th>
-                              <th>Số lượng</th>
-                              <th>Tổng cộng</th>
-                              <th></th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                        <?php
-                        $tongGioHang = 0;
-                        foreach ($chiTietGioHang as $key => $sanPham):
-                        ?>
-                            <tr>
-                                <td>
-                                    <div class="shopping-cart__product-item">
-                                        <a href="./product1_simple.html">
-                                            <img loading="lazy" src="<?= BASE_URL . $sanPham['hinh_anh'] ?>" width="120" height="120" alt="">
-                                        </a>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="shopping-cart__product-item__detail">
-                                        <h4><a href="./product1_simple.html"><?= $sanPham['ten_san_pham']; ?></a></h4>
-                                    </div>
-                                </td>
-                                <td>
-                                    <span class="shopping-cart__product-price">
-                                    <?= number_format($sanPham['gia_khuyen_mai'] ? $sanPham['gia_khuyen_mai'] : $sanPham['gia_san_pham'], 0, ',', '.') ?> đ</span>
-                                </td>
-                                <td>
-                                  <div class="button-container">
-                                      <form action="?act=update-gio-hang" method="POST">
-                                          <input type="hidden" name="id" value="<?= $sanPham['id'] ?>">
-                                          <div class="qty-control position-relative">
-                                          <input type="number" name="so_luong" value="<?= $sanPham['so_luong'] ?>" min="1" class="qty-control__number text-center" required>
-
-                                              <div class="qty-control__reduce">-</div>
-                                              <div class="qty-control__increase">+</div>
-                                          </div>
-                                          <button type="submit" class="btn btn-light">Cập nhật</button>
-                                      </form>
-                                  </div>
-                              </td>
-                                <td>
-                                    <?php
-                                      $tongTien=0;
-                                      if ($sanPham['gia_san_pham']){
-                                        $tongTien = $sanPham['gia_san_pham'] * $sanPham['so_luong'];
-                                      }else{
-                                        $tongTien = $sanPham['gia_khuyen_mai'] * $sanPham['so_luong'];
-                                      }
-                                      $tongGioHang += $tongTien;
-                                      echo number_format($tongTien);
-                                    ?>
-                                </td>
-                                <td>
-                                    <form action="?act=xoa-gio-hang" method="POST" onsubmit="return confirm('Bạn có đồng ý xóa không?')">
-                                        <input type="hidden" name="gio_hang_id" value="<?= $sanPham['id'] ?>">
-                                        <button type="submit" class="link-danger fs-15" style="border: none; background: none; padding: 0;">
-                                            <i class="ri-delete-bin-line" style="font-size: 20px;">xoa</i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-
-                  </table>
-              </div>
-              <div class="shopping-cart__totals-wrapper">
-                  <div class="sticky-content">
-                      <div class="shopping-cart__totals">
-                          <h3>Tổng số giỏ hàng</h3>
-                          <table class="cart-totals">
-                              <tbody>
-                              <tr>
-                            <th>Tổng cộng</th>
-                            <td><?= number_format($tongGioHang, 0, ',', '.') ?> đ</td>
-                        </tr>
-                        <tr>
-                            <th>Thuế (15%)</th>
-                            <td><?= number_format($tongGioHang * 0.15, 0, ',', '.') ?> đ</td>
-                        </tr>
-                        <tr>
-                            <th>Phí vận chuyển</th>
-                            <td><?= number_format(30000, 0, ',', '.') ?> đ</td> <!-- Tách phí vận chuyển ra đây -->
-                        </tr>
-                        <tr>
-                            <th>Tổng cộng (Thanh toán)</th>
-                            <td><?= number_format($tongGioHang + 30000 + ($tongGioHang * 0.15), 0, ',', '.') ?> đ</td>
-                        </tr>
-
-                              </tbody>
-                          </table>
-                      </div>
-                      <?php if (!empty($chiTietGioHang)): ?>
-                      <form action="<?= BASE_URL . '?act=form-dat-hang' ?>" method="post">
-                          <div class="button-wrapper container">
-                              <button type="submit" class="btn btn-primary btn-checkout">Đặt Hàng</button>
-                          </div>
-                      </form>
-                  <?php else: ?>
-                      <div class="button-wrapper container">
-                          <p class="text-danger">Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm trước khi đặt hàng.</p>
-                      </div>
-                  <?php endif; ?>
-                  </div>
-              </div>
-          </div>
+        <div class="blog-single__item-content">
+            <div class="ckeditor-content">
+                <?= $detailBaiViet['content'] ?> <!-- Assuming 'content' is the body of the blog post -->
+            </div>
+        </div>
+      <div class="blog-single__item-share mw-930">
+        <a href="//www.facebook.com/sharer.php?u=https://uomo-crystal.myshopify.com/blogs/news/go-to-wellness-tips-for-mental-health" class="btn btn-share btn-facebook">
+          <svg class="svg-icon svg-icon_facebook" width="9" height="15" fill="#fff" viewBox="0 0 9 15" xmlns="http://www.w3.org/2000/svg"><path d="M7.62891 8.31543L8.01172 5.7998H5.57812V4.15918C5.57812 3.44824 5.90625 2.79199 7 2.79199H8.12109V0.631836C8.12109 0.631836 7.10938 0.44043 6.15234 0.44043C4.15625 0.44043 2.84375 1.6709 2.84375 3.8584V5.7998H0.601562V8.31543H2.84375V14.4404H5.57812V8.31543H7.62891Z"></path></svg>
+          <span>Share on Facebook</span>
+        </a>
+        <a href="//twitter.com/share?text=Go-to%20Wellness%20Tips%20for%20Mental%20Health&amp;url=https://uomo-crystal.myshopify.com/blogs/news/go-to-wellness-tips-for-mental-health" class="btn btn-share btn-twitter">
+          <svg class="svg-icon svg-icon_twitter" width="14" height="13" fill="#fff" viewBox="0 0 14 13" xmlns="http://www.w3.org/2000/svg"><path d="M12.5508 3.59668C13.0977 3.18652 13.5898 2.69434 13.9727 2.12012C13.4805 2.33887 12.9062 2.50293 12.332 2.55762C12.9336 2.20215 13.3711 1.65527 13.5898 0.97168C13.043 1.2998 12.4141 1.5459 11.7852 1.68262C11.2383 1.1084 10.5 0.780273 9.67969 0.780273C8.09375 0.780273 6.80859 2.06543 6.80859 3.65137C6.80859 3.87012 6.83594 4.08887 6.89062 4.30762C4.51172 4.1709 2.37891 3.02246 0.957031 1.2998C0.710938 1.70996 0.574219 2.20215 0.574219 2.74902C0.574219 3.7334 1.06641 4.6084 1.85938 5.12793C1.39453 5.10059 0.929688 4.99121 0.546875 4.77246V4.7998C0.546875 6.19434 1.53125 7.34277 2.84375 7.61621C2.625 7.6709 2.35156 7.72559 2.10547 7.72559C1.91406 7.72559 1.75 7.69824 1.55859 7.6709C1.91406 8.81934 2.98047 9.63965 4.23828 9.66699C3.25391 10.4326 2.02344 10.8975 0.683594 10.8975C0.4375 10.8975 0.21875 10.8701 0 10.8428C1.25781 11.6631 2.76172 12.1279 4.40234 12.1279C9.67969 12.1279 12.5508 7.78027 12.5508 3.97949C12.5508 3.84277 12.5508 3.7334 12.5508 3.59668Z"></path></svg>
+          <span>Share on Twitter</span>
+        </a>
+        <a href="//pinterest.com/pin/create/button/?url=https://uomo-crystal.myshopify.com/blogs/news/go-to-wellness-tips-for-mental-health&amp;media=//uomo-crystal.myshopify.com/cdn/shop/articles/blog6.jpg?crop=center&amp;height=1024&amp;v=1650609391&amp;width=1024&amp;description=Go-to%20Wellness%20Tips%20for%20Mental%20Health" class="btn btn-share btn-pinterest">
+          <svg class="svg-icon svg-icon_pinterest" width="14" height="15" fill="#fff" viewBox="0 0 14 15" xmlns="http://www.w3.org/2000/svg"><path d="M13.5625 7.44043C13.5625 3.69434 10.5273 0.65918 6.78125 0.65918C3.03516 0.65918 0 3.69434 0 7.44043C0 10.3389 1.77734 12.7725 4.29297 13.7568C4.23828 13.2373 4.18359 12.417 4.32031 11.8154C4.45703 11.2959 5.11328 8.45215 5.11328 8.45215C5.11328 8.45215 4.92188 8.04199 4.92188 7.44043C4.92188 6.51074 5.46875 5.7998 6.15234 5.7998C6.72656 5.7998 7 6.2373 7 6.75684C7 7.33105 6.61719 8.20605 6.42578 9.02637C6.28906 9.68262 6.78125 10.2295 7.4375 10.2295C8.64062 10.2295 9.57031 8.97168 9.57031 7.13965C9.57031 5.49902 8.39453 4.37793 6.75391 4.37793C4.8125 4.37793 3.69141 5.82715 3.69141 7.30371C3.69141 7.90527 3.91016 8.53418 4.18359 8.8623C4.23828 8.91699 4.23828 8.99902 4.23828 9.05371C4.18359 9.27246 4.04688 9.7373 4.04688 9.81934C4.01953 9.95605 3.9375 9.9834 3.80078 9.92871C2.95312 9.51855 2.43359 8.28809 2.43359 7.27637C2.43359 5.14355 3.99219 3.1748 6.91797 3.1748C9.26953 3.1748 11.1016 4.87012 11.1016 7.1123C11.1016 9.43652 9.625 11.3232 7.57422 11.3232C6.89062 11.3232 6.23438 10.9678 6.01562 10.5303C6.01562 10.5303 5.6875 11.8428 5.60547 12.1436C5.44141 12.7451 5.03125 13.4834 4.75781 13.9209C5.38672 14.1396 6.07031 14.2217 6.78125 14.2217C10.5273 14.2217 13.5625 11.1865 13.5625 7.44043Z"></path></svg>
+          <span>Share on Pinterest</span>
+        </a>
 
 
-      <!-- Form END -->
+      </div>
+
+
     </section>
   </main>
 
-  <div class="mb-5 pb-xl-5"></div>
-  
-  <?php require_once 'layout/footer.php';?>
-  <!-- Footer Scripts -->
+ 
+
 </body>
 </html>

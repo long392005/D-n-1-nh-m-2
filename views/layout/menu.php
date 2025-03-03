@@ -141,10 +141,70 @@ $nguoiDung = $_SESSION['user_admin'] ?? null; // Kiểm tra nếu có thông tin
             </div>
           </div>
 
+<<<<<<< HEAD
           <a class="header-tools__item" href="account_wishlist.html">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <use href="#icon_heart" />
             </svg>
+=======
+  <!-- Dropdown Menu -->
+  <div class="dropdown-menu dropdown-menu-end">
+    <?php if (isset($_SESSION['user_admin'])): ?>
+      <!-- Đã đăng nhập -->
+      <h6 class="dropdown-header">
+        Chào <?= $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!
+      </h6>
+      <!-- Profile -->
+      <a class="dropdown-item" href="?act=detail-tai-khoan&id_nguoi_dung=<?= $nguoiDung['id'] ?? ''; ?>">
+        <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Tài khoản</span>
+      </a>
+      <a class="dropdown-item" href="?act=don-hang&id_nguoi_dung=<?= $nguoiDung['id'] ?? ''; ?>">
+        <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Đơn hàng</span>
+      </a>
+      <!-- Logout -->
+      <a class="dropdown-item" href="<?= BASE_URL . '?act=logout-client' ?>">
+        <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle" data-key="t-logout">Đăng xuất</span>
+      </a>
+    <?php else: ?>
+      <!-- Chưa đăng nhập -->
+      <h6 class="dropdown-header">
+        Chào mừng, Guest!
+      </h6>
+      <!-- Login -->
+      <a class="dropdown-item" href="<?= BASE_URL_ADMIN . '?act=login-admin' ?>">
+        <i class="mdi mdi-login text-muted fs-16 align-middle me-1"></i>
+        <span class="align-middle">Đăng nhập</span>
+      </a>
+    <?php endif; ?>
+  </div>
+</div>
+
+
+  <!-- Dropdown Menu -->
+  <div class="dropdown-menu dropdown-menu-end">
+    <!-- Header -->
+    <h6 class="dropdown-header">
+      Welcome <?php echo $_SESSION['user_admin']['ten'] ?? 'Guest'; ?>!
+    </h6>
+    <!-- Profile -->
+    <a class="dropdown-item" href="pages-profile.html">
+      <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
+      <span class="align-middle">Tài khoản</span>
+    </a>
+    <!-- Logout -->
+    <a class="dropdown-item" href="?act=logout-client&base=user">
+      <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+      <span class="align-middle" data-key="t-logout">Đăng nhập</span>
+    </a>
+  </div>
+</div>
+
+<a class="header-tools__item" href="account_wishlist.html">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#icon_heart" /></svg>
+>>>>>>> becebb01f12f8faa4f605ccddf5b9e610d204749
           </a>
 
           <a href="?act=gio-hang" class="header-tools__item" data-aside="cartDrawer">

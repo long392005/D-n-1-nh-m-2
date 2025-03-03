@@ -1,3 +1,9 @@
+
+<style>
+  * {
+    text-decoration: none !important;
+}
+</style>
 <footer class="footer footer_type_1">
     <div class="footer-middle container">
       <div class="row row-cols-lg-5 row-cols-2">
@@ -713,16 +719,16 @@
   <div class="page-overlay"></div><!-- /.page-overlay -->
 
   <!-- External JavaScripts -->
-  <script src="js/plugins/jquery.min.js"></script>
+  <script src="assets/js/plugins/jquery.min.js"></script>
   <script src="js/plugins/bootstrap.bundle.min.js"></script>
-  <script src="js/plugins/bootstrap-slider.min.js"></script>
+  <script src="assets/js/plugins/bootstrap-slider.min.js"></script>
   
-  <script src="js/plugins/swiper.min.js"></script>
-  <script src="js/plugins/countdown.js"></script>
-  <script src="js/plugins/jquery.fancybox.js"></script>
+  <script src="assets/js/plugins/swiper.min.js"></script>
+  <script src="assets/js/plugins/countdown.js"></script>
+  <script src="assets/js/plugins/jquery.fancybox.js"></script>
 
   <!-- Footer Scripts -->
-  <script src="js/theme.js">
+  <script src="assets/js/theme.js">
     // Kiểm tra nếu có thông báo 'success' từ server
     <?php if(isset($_GET['act']) && $_GET['act'] == 'them-gio-hang' && isset($_SESSION['cart_success']) && $_SESSION['cart_success'] == true): ?>
         window.onload = function() {
@@ -737,4 +743,4 @@
 </script>
 
   <!-- Footer Scripts -->
-  <script src="/js/theme.js"></script>
+  <script src="assets/js/theme.js"></script>
